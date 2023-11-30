@@ -1,7 +1,7 @@
 <br />
 
 <p align="center">
-    <img src="https://github.com/Fre0Grella/AgroNET/blob/main/root/img/AgroNET_logo_preview_rev_1.png" alt="Logo" width="700" height="500">
+    <img src="https://github.com/Fre0Grella/AgroNET/blob/main/root/img/AgroNET_logo_preview_rev_1.png" alt="Logo" width="400" height="400">
 
 
 
