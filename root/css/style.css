@@ -7,7 +7,7 @@
 
  main
  {
-    width: 1400px;
+    width: 1200px;
     margin: 20px auto;
     columns: 4;
     column-gap: 20px;
@@ -31,13 +31,26 @@ main article header {
 
 }
 
-main + nav {
+.topBar {
     position: fixed;
     right: 0;
     top: 0;
+    background-image: linear-gradient(#50d07b, #ff766a);
+    
+}
+
+.botBar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #50d07b;
+    
+}
+
+nav {
     width: 70px;
     height: 100%;
-    background-color: #50d07b;
+    
     color: black;
     display: flex;
     flex-direction: column;
