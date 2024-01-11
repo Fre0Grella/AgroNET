@@ -1,0 +1,45 @@
+body
+ {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    background-color: #226037;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+ }
+
+svg {
+width: 360px;
+height: 484px;
+flex-shrink: 0;
+fill: #FDE918;
+stroke-width: 1px;
+stroke: #000;
+}
+
+img {
+    width: 360px;
+    height: 366px;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+a {
+    width: 250px;
+    height: 90px;
+    flex-shrink: 0;
+    border-radius: 75px;
+    background: #FDE918;
+    color: #226037;
+    text-align: center;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    letter-spacing: 0.24px;
+    text-decoration: none;
+}
