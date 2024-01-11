@@ -21,6 +21,20 @@ CREATE TABLE users (
     password VARCHAR(255),
 );
 
+CREATE TABLE posts (
+    post_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    description TEXT,
+    image_data LONGBLOB, -- Campo per memorizzare i dati binari dell'immagine
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+CREATE TABLE chats (
+     chat_id INT PRIMARY KEY AUTO_INCREMENT,
+    -- Altri campi della chat a seconda delle esigenze
+);
+
+
 
 CREATE TABLE comments (
     comment_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -42,12 +56,5 @@ CREATE TABLE messages (
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
-CREATE TABLE posts (
-    post_id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT,
-    description TEXT,
-    image_data LONGBLOB, -- Campo per memorizzare i dati binari dell'immagine
-    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
-);
+
 
