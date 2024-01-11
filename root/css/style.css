@@ -3,14 +3,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
  }
 
  main
  {
-    width: 1200px;
+    width: 80%;
     margin: 20px auto;
     columns: 4;
     column-gap: 20px;
+    
  }
 
  main article
@@ -42,13 +44,13 @@ main article header {
 .botBar {
     position: fixed;
     left: 0;
-    top: 0;
+    bottom: 0;
     background-color: #50d07b;
     
 }
 
 nav {
-    width: 70px;
+    width: 5%;
     height: 100%;
     
     color: black;
@@ -58,32 +60,38 @@ nav {
     justify-content: space-evenly;
 }
 
-@media (max-width: 768px) {
-    main
-    {
-        columns: 3;
-    }
+/*@media (min-width:320px) {
     
-}
-
-@media (max-width: 480px) {
     main
     {
         columns: 2;
     }
 
-    main + nav {
+    .topBar {
+        position: fixed;
+        right: 0;
+        top: 0;
+        background-image: linear-gradient(to right, #50d07b, #ff766a);
+        
+    }
+    
+    .botBar {
         position: fixed;
         left: 0;
         bottom: 0;
-        width: 100%;
-        height: 70px;
         background-color: #50d07b;
+        
+    }
+    
+    nav {
+        width: 100%;
+        height: 5%;
+        
         color: black;
         display: flex;
         flex-direction: row;
-        justify-content: space-evenly;
         align-items: center;
+        justify-content: space-evenly;
     }
     
-}
+}*/
