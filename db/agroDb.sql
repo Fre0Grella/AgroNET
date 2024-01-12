@@ -1,7 +1,5 @@
--- Crea il database se non esiste già
 CREATE DATABASE IF NOT EXISTS agro_db;
 
--- Seleziona il database appena creato
 USE agro_db;
 
 -- Dichiarazioni per impostare la codifica del database (es. UTF-8)
@@ -11,7 +9,6 @@ SET CHARACTER SET utf8;
 -- Dichiarazione per evitare il modo strict di MySQL (opzionale)
 SET sql_mode = '';
 
--- Resto del tuo script SQL (creazione di tabelle, indici, vincoli, ecc.)
 
 
 CREATE TABLE users (
@@ -25,13 +22,13 @@ CREATE TABLE posts (
     post_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT,
     description TEXT,
-    image_data LONGBLOB, -- Campo per memorizzare i dati binari dell'immagine
+    image_data LONGBLOB, 
     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 CREATE TABLE chats (
      chat_id INT PRIMARY KEY AUTO_INCREMENT,
-    -- Altri campi della chat a seconda delle esigenze
+    -- incompleta
 );
 
 
