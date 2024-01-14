@@ -1,7 +1,7 @@
 INSERT INTO users (username, email, password, created_at)
 SELECT
-    CONCAT('utente', UUID()) AS username,
-    CONCAT('utente', UUID(), '@example.com') AS email,
+    CONCAT('utente', user_id) AS username,
+    CONCAT('utente', user_id, '@example.com') AS email,
     "hashedpassword" AS password,
     CURRENT_TIMESTAMP AS created_at
 FROM
