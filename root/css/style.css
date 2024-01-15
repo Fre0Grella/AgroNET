@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+
  }
 
  main
@@ -13,6 +13,7 @@
     columns: 4;
     column-gap: 20px;
     
+
  }
 
  main article
@@ -25,8 +26,6 @@
 main article img {
     max-width: 100%;
     border-radius: 15px;
-
-    
 }
 
 main article header {
@@ -37,22 +36,25 @@ main article header {
     position: fixed;
     right: 0;
     top: 0;
-    background-image: linear-gradient(#226037,#FDE918, #ff766a);
-    
+    /* background-image: linear-gradient( #97503A, #FDE918, #226037); */
+
+}
+.change {
+    filter: invert(100%);
 }
 
-.botBar {
+#botBar {
     position: fixed;
     left: 0;
     bottom: 0;
-    background-color: #226037;
-    
+    background-color: #FDE918;
+
 }
 
 nav {
     width: 5%;
     height: 100%;
-    
+
     color: black;
     display: flex;
     flex-direction: column;
@@ -60,8 +62,61 @@ nav {
     justify-content: space-evenly;
 }
 
+nav img {
+    z-index: 1;
+}
+
+nav img:hover {
+    padding: 0 !important;
+}
+
+.slider {
+    -webkit-appearance: none;
+    transform: rotate(270deg);
+    width: 100vh;
+    height: 5vw;
+    background-image: linear-gradient(to right, #97503A, #FDE918, #226037);
+    /* border-radius: 50px; */
+    border: solid 5px grey;
+    outline: none;
+    opacity: 0.9;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    z-index: 0;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 9vh;
+    height: 4.5vw;
+    background: darkgrey;
+    border-radius: 15px;
+    border: solid 5px gray;
+    cursor: pointer;
+
+}
+
+
+.slider::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 4.5vh;
+    height: 4.5vw;
+    background: darkgrey;
+    border-radius: 15px;
+    border: solid 5px gray;
+    cursor: pointer;
+}
+
+
+
 /*@media (min-width:320px) {
-    
+
     main
     {
         columns: 2;
@@ -72,26 +127,26 @@ nav {
         right: 0;
         top: 0;
         background-image: linear-gradient(to right, #50d07b, #ff766a);
-        
+
     }
-    
+
     .botBar {
         position: fixed;
         left: 0;
         bottom: 0;
         background-color: #50d07b;
-        
+
     }
-    
+
     nav {
         width: 100%;
         height: 5%;
-        
+
         color: black;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-evenly;
     }
-    
+
 }*/
