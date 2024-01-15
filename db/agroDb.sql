@@ -15,8 +15,7 @@ CREATE TABLE users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    password VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE posts (
@@ -32,7 +31,7 @@ CREATE TABLE posts (
 
 
 CREATE TABLE chats (
-    chat_id INT PRIMARY KEY AUTO_INCREMENT,
+    chat_id VARCHAR(100) PRIMARY KEY,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -50,12 +49,20 @@ CREATE TABLE comments (
 
 CREATE TABLE messages (
     message_id INT PRIMARY KEY AUTO_INCREMENT,
-    chat_id INT,
+    chat_id VARCHAR(100),
     user_id INT,
     message_text TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (chat_id) REFERENCES chats(chat_id),
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE followers (
+    follower_id INT,
+    followed_id INT,
+    PRIMARY KEY (follower_id, followed_id),
+    FOREIGN KEY (follower_id) REFERENCES users(user_id),
+    FOREIGN KEY (followed_id) REFERENCES users(user_id)
 );
 
 
