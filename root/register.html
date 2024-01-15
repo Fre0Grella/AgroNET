@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
-        <title>AgroNET - Login page</title>
+        <title>AgroNET - Register page</title>
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
@@ -12,14 +12,14 @@
         <link href="css/login.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <div class="conteiner-fluid text-center fixed-center ">
-            <div class="row justify-content-center">
-                <div class="col-8">
-                    <img src="img/AgroNET_logo.png" class="img-fluid"/>
-                  </div>
-            </div>
+        <div class="conteiner-fluid justify-content-center text-center">
+            <h1>Create Account</h1>
         </div>
         <form action="#" method="post" class="conteiner justify-content-center col-8 offset-2 gy-5">
+            <div class="username p-2">
+                <label for="userinput" class="form-label">Username</label>
+                <input type="text" class="form-control" id="userinput" placeholder="Your username">
+            </div>
             <div class="email p-2">
                 <label for="emailinput" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="emailinput" placeholder="name@example.com">
@@ -34,8 +34,8 @@
             </div>
         </form>
         <div class="conteiner-fluid text-center p-3">
-            <label>Don't have an account?</label>
-            <a href="register.html">Sign up</a>
+            <label>Already have an account?</label>
+            <a href="login.html"> Log in</a>
         </div>
         
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
