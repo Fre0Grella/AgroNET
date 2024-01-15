@@ -1,10 +1,8 @@
-$(".toggle-password").click(function() {
+const togglePassword = document.querySelector('#togglePassword');
+const password = document.querySelector('#password');
 
-    $(this).toggleClass("fa-eye fa-eye-slash");
-    var input = $($(this).attr("toggle"));
-    if (input.attr("type") == "password") {
-      input.attr("type", "text");
-    } else {
-      input.attr("type", "password");
-    }
-  });
+        togglePassword.addEventListener('click', () => {
+                const type = password.getAttribute('type') === 'password' ?'text' : 'password';
+                password.setAttribute('type', type);
+                document.getElementById("togglePassword").classList.toggle('bi-eye');
+              });
