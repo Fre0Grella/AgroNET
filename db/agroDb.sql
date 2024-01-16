@@ -22,6 +22,7 @@ CREATE TABLE posts (
     post_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT,
     description TEXT,
+    category BOOLEAN DEFAULT true,
     image_data LONGBLOB, 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     likes INT DEFAULT 0,
@@ -53,7 +54,7 @@ CREATE TABLE messages (
     user_id INT,
     message_text TEXT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (chat_id) REFERENCES chats(chat_id),
+    FOREIGN KEY (chat_id) REFERENCES chats(chat_id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
 
