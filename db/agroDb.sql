@@ -22,6 +22,7 @@ CREATE TABLE posts (
     post_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT,
     description TEXT,
+    category BOOLEAN DEFAULT true,
     image_data LONGBLOB, 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     likes INT DEFAULT 0,
