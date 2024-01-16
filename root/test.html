@@ -1,63 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-.slidecontainer {
-  width: 100%;
-}
-
-.slider {
-  -webkit-appearance: none;
-  width: 30%;
-  height: 50px;
-  background-image: linear-gradient(to right, #97503A, #FDE918, #226037);
-  border-radius: 50px;
-  border: solid 5px grey;
-  outline: none;
-  opacity: 0.9;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-}
-
-.slider:hover {
-  opacity: 1;
-}
-
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 45px;
-  height: 45px;
-  background: darkgrey;
-  border-radius: 15px;
-  border: solid 5px gray;
-  cursor: pointer;
-}
-
-
-.slider::-moz-range-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 45px;
-    height: 45px;
-    background: darkgrey;
-    border-radius: 15px;
-    border: solid 5px gray;
-    cursor: pointer;
-}
-</style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/test.css" rel="stylesheet">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script src="js/searchBar.js"></script>
 </head>
 <body>
-
-<h1>Custom Range Slider</h1>
-
-<div class="slidecontainer">
-  <p>Default range slider:</p>
-  <input type="range" min="1" max="3" value="2">
-  
-  <p>Custom range slider:</p>
-  <input aria-orientation="vertical" type="range" min="1" max="3" value="2" class="slider">
+<input type="text" placeholder="Search" class="searchBar">
+<div class="content">
 </div>
 
 </body>
