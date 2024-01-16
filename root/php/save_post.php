@@ -12,10 +12,10 @@ if ($_FILES['image']['size'] > 0) {
     $image = null; 
 }
 
-$category = $_POST['category']['value'];
+$category = $_POST['category'];
 
 
-if ($category == 1) {
+if ($category == 'true') {
     $sql = "INSERT INTO posts (description, image_data) VALUES ('$description', '$image')";
 } else {
     $sql = "INSERT INTO posts (description, category, image_data) VALUES ('$description', false, '$image')";
