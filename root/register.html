@@ -9,31 +9,38 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="stylesheet"href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"crossorigin="anonymous">
-        <link href="css/login.css" rel="stylesheet" type="text/css"/>
+        <link href="css/register.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <div class="conteiner-fluid text-center fixed-center">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <img src="img/AgroNET_logo.png" class="img-fluid"/>
+                  </div>
+            </div>
+        </div>
         <div class="conteiner-fluid justify-content-center text-center">
             <h1>Create Account</h1>
         </div>
-        <form action="#" method="post" class="conteiner justify-content-center col-8 offset-2 gy-5">
-            <div class="username p-2">
+        <form action="#" method="post" class="conteiner justify-content-center col-10 offset-1">
+            <div class="username my-3">
                 <label for="userinput" class="form-label">Username</label>
                 <input type="text" class="form-control" id="userinput" placeholder="Your username">
             </div>
-            <div class="email p-2">
+            <div class="email my-3">
                 <label for="emailinput" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="emailinput" placeholder="name@example.com">
             </div>
-            <div class="pass p-2">
+            <div class="password my-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" name="password" id="password" class="form-control"/>
 				<i class="bi bi-eye-slash" id="togglePassword"></i>
             </div>
-            <div class="button col-12 text-center p-2">
-                <button class="btn col-4 " type="submit">Login</button>
+            <div class="button col-12 text-center my-4">
+                <button class="btn col-6 " type="submit">Create account</button>
             </div>
         </form>
-        <div class="conteiner-fluid text-center p-3">
+        <div class="conteiner-fluid text-center mt-2">
             <label>Already have an account?</label>
             <a href="login.html"> Log in</a>
         </div>
