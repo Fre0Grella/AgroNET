@@ -1,0 +1,17 @@
+main {
+    margin: calc(40vh + 20px)  auto 0 auto;
+}
+.searchBar {
+    position: fixed;
+    top: 0px;
+    width: 80%;
+    height: 40%;
+    background: white;
+    display: flex;
+    align-items: center;
+    color: #226037;
+}
+
+#profilePic {
+    max-height: 40vh;
+}
