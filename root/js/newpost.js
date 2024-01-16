@@ -13,4 +13,15 @@ function createPost() {
     };
     xhr.send(formData);
   }
+
+function changePostType() {
+  var tractor = "img/icon/tractor.svg"
+  var greens = "img/icon/greens.svg"
+  var img = document.getElementById('buttonIcon');
+  if (img.getAttribute('src') == tractor) {
+    img.setAttribute('src', greens);
+  } else {
+    img.setAttribute('src', tractor);
+  }
+}
   
