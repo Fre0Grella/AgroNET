@@ -12,7 +12,15 @@ if ($_FILES['image']['size'] > 0) {
     $image = null; 
 }
 
-$sql = "INSERT INTO posts (description, image) VALUES ('$description', '$image')";
+$category = $_POST['category']['value'];
+
+
+if ($category == 1) {
+    $sql = "INSERT INTO posts (description, image_data) VALUES ('$description', '$image')";
+} else {
+    $sql = "INSERT INTO posts (description, category, image_data) VALUES ('$description', false, '$image')";
+}
+
 
 if ($dbh->query($sql) === TRUE) {
     echo "Post salvato con successo.";
