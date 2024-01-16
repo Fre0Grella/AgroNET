@@ -16,7 +16,8 @@ CREATE TABLE users (
     username VARCHAR(50) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    profile_image LONGBLOB
+    profile_image LONGBLOB,
+    bio TEXT
 );
 
 CREATE TABLE posts (
