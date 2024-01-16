@@ -17,13 +17,14 @@ function createPost() {
 function changePostType() {
   var tractor = "img/icon/tractor.svg"
   var greens = "img/icon/greens.svg"
-  var img = document.getElementById('buttonIcon');
-  if (img.getAttribute('value') == 0) {
+  var img = document.getElementById('type');
+  var category = document.getElementById('category')
+  if (category.getAttribute('value') == 'false') {
     img.setAttribute('src', greens);
-    img.setAttribute('value', 1);
+    category.setAttribute('value', 'true');
   } else {
     img.setAttribute('src', tractor);
-    img.setAttribute('value', 0);
+    category.setAttribute('value', 'false');
   }
 }
   
