@@ -1,6 +1,6 @@
 <?php
 // Connessione al database
-require_once('../bootstrap.php');
+require_once __DIR__ . "../bootstrap.php";
 
 
 

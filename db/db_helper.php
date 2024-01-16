@@ -1,6 +1,6 @@
 <?php
 
-public class DatabaseHelper{
+class DatabaseHelper{
     private $db;
 
     public function __construct($servername, $username, $password, $dbname, $port) {
