@@ -1,0 +1,23 @@
+.searchBar {
+    position: fixed;
+    top: 0px;
+    width: 80%;
+    height: 10%;
+    background: white;
+    display: flex;
+    align-items: center;
+    color: #226037;
+    /* text-transform: uppercase; */
+    /* font-weight: bold; */
+}
+
+.searchBar input {
+    background-color: #efefef;
+    color: #737373;
+    border: none;
+}
+
+.searchBar input:focus {
+    background-color: #efefef;
+    color: #737373;
+}
