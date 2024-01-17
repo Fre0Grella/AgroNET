@@ -2,12 +2,15 @@
     height: 100vh;
 }
 
+.users {
+    padding: 0;
+}
+
 .users-container {
     position: relative;
     padding: 1rem 0;
     border-right: 1px solid #b4b5b5;
     height: 100%;
-    display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;
@@ -109,4 +112,19 @@ ul {
 .chat-container .form-control {
     position:relative;
     bottom: 0;
+}
+
+.form-group {
+    width: 90%;
+}
+
+textarea {
+    resize: none;
+}
+
+button {
+    margin-right: -65px;
+    margin-top: -37px;
+    float: right;
+    cursor: pointer;
 }
