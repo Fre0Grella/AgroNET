@@ -38,7 +38,7 @@ class DatabaseHelper{
         $stmt = this->db->prepare("SELECT p.post_id, p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
-        WHERE f.follower_id = ? AND p.category = 0
+        WHERE f.follower_id = ? AND p.category = 1
         ORDER BY p.likes DESC
         LIMIT 50;
         ");
@@ -54,7 +54,7 @@ class DatabaseHelper{
         $stmt = this->db->prepare("SELECT p.post_id, p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
-        WHERE f.follower_id = ? AND p.category = 1
+        WHERE f.follower_id = ? AND p.category = 0
         ORDER BY p.likes DESC
         LIMIT 50;
         ");
