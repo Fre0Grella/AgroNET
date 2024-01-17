@@ -68,5 +68,14 @@ CREATE TABLE followers (
     FOREIGN KEY (followed_id) REFERENCES users(user_id)
 );
 
+CREATE TABLE notifications (
+    user_id INT,
+    notification_text TEXT NOT NULL,
+    is_read BOOLEAN NOT NULL DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+
 
 
