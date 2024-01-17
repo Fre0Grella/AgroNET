@@ -19,7 +19,7 @@ class DatabaseHelper {
     }
 
     function postFromFollowed($user_id) {
-        $stmt = this->db->prepare("SELECT p.post_id, p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.post_id, p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
         WHERE f.follower_id = ?
@@ -35,7 +35,7 @@ class DatabaseHelper {
     }
 
     function postGreenFromFollowed($user_id) {
-        $stmt = this->db->prepare("SELECT p.post_id, p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.post_id, p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
         WHERE f.follower_id = ? AND p.category = 1
@@ -51,7 +51,7 @@ class DatabaseHelper {
     }
 
     function postTractorFromFollowed($user_id) {
-        $stmt = this->db->prepare("SELECT p.post_id, p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.post_id, p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
         WHERE f.follower_id = ? AND p.category = 0
@@ -67,7 +67,7 @@ class DatabaseHelper {
     }
 
     function randomPost($user_id) {
-        $stmt = this->db->prepare("SELECT p.post_id, p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.post_id, p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
         WHERE p.user_id NOT IN (
             SELECT followed_id
@@ -83,8 +83,8 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public getNotifications($user_id) {
-        $stmt = this->db->prepare("SELECT notification_text
+    public function getNotifications($user_id) {
+        $stmt = $this->db->prepare("SELECT notification_text
         FROM notifications
         WHERE user_id = ?
         ORDER BY created_at DESC;
