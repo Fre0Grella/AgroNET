@@ -18,7 +18,7 @@ $category = $_POST['category'];
 if ($category == 'true') {
     $sql = "INSERT INTO posts (description, image_data) VALUES ('$description', '$image')";
 } else {
-    $sql = "INSERT INTO posts (description, category, image_data) VALUES ('$description', false, '$image')";
+    $sql = "INSERT INTO posts (description, category, image_data) VALUES ('$description', 0, '$image')";
 }
 
 
