@@ -1,6 +1,6 @@
 <?php
 // Connessione al database
-require_once __DIR__ . "../bootstrap.php";
+require_once __DIR__ . "/../bootstrap.php";
 
 
 
@@ -28,7 +28,5 @@ if ($dbh->query($sql) === TRUE) {
 } else {
     echo "Errore durante il salvataggio del post: " . $dbh->error;
 }
-header("Location: ../home.html");
 $dbh->close();
-exit();
 ?>
