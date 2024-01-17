@@ -1,55 +1,16 @@
-div.conte
-
-.chat-search-box {
-    -webkit-border-radius: 3px 0 0 0;
-    -moz-border-radius: 3px 0 0 0;
-    border-radius: 3px 0 0 0;
-    padding: .75rem 1rem;
+.row {
+    height: 100vh;
 }
 
-.chat-search-box .input-group .form-control {
-    -webkit-border-radius: 2px 0 0 2px;
-    -moz-border-radius: 2px 0 0 2px;
-    border-radius: 2px 0 0 2px;
-    border-right: 0;
-}
-
-.chat-search-box .input-group .input-group-btn .btn {
-    -webkit-border-radius: 0 2px 2px 0;
-    -moz-border-radius: 0 2px 2px 0;
-    border-radius: 0 2px 2px 0;
-    margin: 0;
-}
-
-.chat-search-box .input-group .input-group-btn .btn i {
-    font-size: 1.2rem;
-    line-height: 100%;
-    vertical-align: middle;
-}
-/************************************************
-	************************************************
-									Users Container
-	************************************************
-************************************************/
 .users-container {
     position: relative;
     padding: 1rem 0;
-    border-right: 1px solid #d5dbe1;
+    border-right: 1px solid #b4b5b5;
     height: 100%;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;
-}
-
-/************************************************
-	************************************************
-											Users
-	************************************************
-************************************************/
-
-.users {
-    padding: 0;
 }
 
 .users .person {
@@ -79,32 +40,12 @@ div.conte
     border-radius: 50px;
 }
 
-.users .person p.name-time {
-    font-weight: 600;
-    font-size: .85rem;
-    display: inline-block;
-}
-
-.users .person p.name-time .time {
-    font-weight: 400;
-    font-size: .7rem;
-    text-align: right;
-    color: #8796af;
-}
-
-
-/************************************************
-	************************************************
-									Chat right side
-	************************************************
-************************************************/
-
 .selected-user {
     width: 100%;
     padding: 0 15px;
     min-height: 64px;
     line-height: 64px;
-    border-bottom: 1px solid #e6ecf3;
+    border-bottom: 1px solid #b4b5b5;
     -webkit-border-radius: 0 3px 0 0;
     -moz-border-radius: 0 3px 0 0;
     border-radius: 0 3px 0 0;
@@ -165,3 +106,7 @@ ul {
     list-style-type: none;
 }
 
+.chat-container .form-control {
+    position:relative;
+    bottom: 0;
+}
