@@ -1,6 +1,6 @@
 <?php
 
-class DatabaseHelper{
+class DatabaseHelper {
     private $db;
 
     public function __construct($servername, $username, $password, $dbname, $port) {
@@ -94,6 +94,19 @@ class DatabaseHelper{
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function loginCheck($email) {
+        $stmt = $this->db->prepare("SELECT users.email , users.password
+        FROM users
+        WHERE email = ?;
+        ");
+
+        $stmt->bindParam("i", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+       return $result->fetch_all(MYSQLI_ASSOC);
     }
 
 }
