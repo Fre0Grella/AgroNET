@@ -19,7 +19,7 @@ class DatabaseHelper {
     }
 
     public function postFromFollowed($user_id) {
-        $stmt = $this->db->prepare("SELECT p.post_id, p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
         WHERE f.follower_id = ?
@@ -35,7 +35,7 @@ class DatabaseHelper {
     }
 
     public function postGreenFromFollowed($user_id) {
-        $stmt = $this->db->prepare("SELECT p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
         WHERE f.follower_id = ? AND p.category = 1
@@ -51,7 +51,7 @@ class DatabaseHelper {
     }
 
     public function postTractorFromFollowed($user_id) {
-        $stmt = $this->db->prepare("SELECT p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT  p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
         WHERE f.follower_id = ? AND p.category = 0
@@ -67,7 +67,7 @@ class DatabaseHelper {
     }
 
     public function randomPost($user_id) {
-        $stmt = $this->db->prepare("SELECT p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
         WHERE p.user_id NOT IN (
             SELECT followed_id
@@ -137,7 +137,7 @@ class DatabaseHelper {
     }
 
     public function getPostsFromId($user_id) {
-        $stmt = $this->db->prepare("SELECT p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
         WHERE p.user_id = ?
         ORDER BY p.likes DESC
