@@ -4,7 +4,7 @@ function registerUser() {
     var formData = new FormData(form);
     
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/root/php/register.php', true);
+    xhr.open('POST', '/AgroNET/root/php/register.php', true);
     xhr.onload = function() {
     if (xhr.readyState == 4 && xhr.status == 200) 
     {

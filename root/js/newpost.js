@@ -3,7 +3,7 @@ function createPost() {
     var formData = new FormData(form);
     
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/root/php/save_post.php', true);
+    xhr.open('POST', '/AgroNET/root/php/save_post.php', true);
     xhr.onload = function() {
       if (xhr.status === 200) {
         alert('Post creato con successo!');

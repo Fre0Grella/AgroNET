@@ -8,17 +8,18 @@ togglePassword.addEventListener('click', () => {
 });
 
 function loginCheck() {
-        var form = document.getElementById('button-login');
+        var form = document.getElementById('loginForm');
         var formData = new FormData(form);
         
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'php/login.php', true);
+        xhr.open('POST', '/AgroNET/root/php/login.php', true);
         xhr.onload = function() {
           if (xhr.status === 200) {
-            alert('Post creato con successo!');
+            window.location.href = 'home.html';
+            alert('YOU ARE LOGGED IN!');
           } else {
-            alert('Errore durante la creazione del post. Codice HTTP:' + xhr.status );
+            alert('Errore. Codice HTTP:' + xhr.status );
           }
         };
         xhr.send(formData);
-      }
+}
