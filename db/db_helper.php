@@ -135,7 +135,17 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function isRegistered($email,$username) {
+        $stmt = $this->db->prepare("SELECT email
+        FROM users
+        WHERE email = ? OR username = ?;
+        ");
+        $stmt->bind_param("ss", $email,$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
     public function registerUser($email,$password,$username) {
         $stmt = $this->db->prepare("INSERT INTO users (email, password, username) VALUES (?, ?, ?);");
         $stmt->bind_Param("sss", $email, $password, $username);

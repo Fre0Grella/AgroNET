@@ -8,10 +8,9 @@ $username = $_POST['username'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-$query = "SELECT * FROM users WHERE email = '$email' OR password = '$password'";
-$result = $conn->query($query);
+$result = $dbh->isRegistered($email,$username);
 
-if($result->num_rows == 0) {
+if($count($result) == 0) {
     $dbh->registerUser($email,$password,$username);
     header("Location: ../home.php");
 }
