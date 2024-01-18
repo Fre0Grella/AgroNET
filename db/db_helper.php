@@ -23,9 +23,10 @@ class DatabaseHelper {
     }
 
     public function postFromFollowed($user_id) {
-        $stmt = $this->db->prepare("SELECT p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.description, p.category, p.image_data, p.created_at, p.likes, u.username, u.user_profile
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
+        JOIN users u ON u.user_id = p.user_id
         WHERE f.follower_id = ?
         ORDER BY p.likes DESC
         LIMIT 50;
