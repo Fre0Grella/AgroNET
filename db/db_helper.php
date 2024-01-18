@@ -107,13 +107,6 @@ class DatabaseHelper {
         $stmt->bind_Param("sss", $email, $password, $username);
         $stmt->execute();
         $stmt->close();
-
-        $stmt = $this->db->prepare("SELECT  user_id FROM users WHERE username = ?;");
-        $stmt->bind_Param("s", $username);
-        $stmt->execute();
-        $result = $stmt->fetch();
-        $userid = $result['user_id'];
-        $_SESSION['user_id'] = $userid;    
     }
 
     public function loginCheck($email,$password) {
@@ -234,6 +227,18 @@ class DatabaseHelper {
         $stmt = $this->db->prepare("SELECT COUNT(*) AS likes
         FROM likes
         WHERE post_id = ?;");
+        $stmt->bind_param("i", $post_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getCommentsFromPost($post_id) {
+        $stmt = $this->db->prepare("SELECT c.comment, u.username, u.user_profile
+        FROM comments c
+        JOIN users u ON c.user_id = u.user_id
+        WHERE c.post_id = ?;");
         $stmt->bind_param("i", $post_id);
         $stmt->execute();
         $result = $stmt->get_result();
