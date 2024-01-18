@@ -1,0 +1,33 @@
+main {
+    columns: 1 !important;
+    display: flex !important;
+}
+.postCol {
+    float: left;
+    width: 50% !important;
+    margin-bottom: 20px;
+}
+.commentCol {
+    float: right;
+    width: 50% !important;
+}
+article {
+    position: sticky;
+    top: 0;
+}
+
+@media only screen and (orientation: portrait) {
+    main {
+        margin-left: 10px;
+    }
+    .postCol {
+        width: 100% !important;
+        
+    }
+    .commentCol {
+        width: 100% !important;
+    }
+    article {
+        position:relative;
+    }
+}
