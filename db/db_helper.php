@@ -161,14 +161,19 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+    
+     public function getSearchAdvide($search) {
+        $stmt = $this->db->prepare("SELECT username, profile_image
+        FROM users
+        WHERE username LIKE ?;
+        ");
+        $stmt->bind_param("s", $search);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
+        return $result->fetch_all(MYSQLI_ASSOC);
     
     
-    
-
-
-
-
 }
 
 ?>
