@@ -110,7 +110,7 @@ class DatabaseHelper {
         $stmt = $this->db->prepare("SELECT  user_id FROM users WHERE username = ?;");
         $stmt->bind_Param("s", $username);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch();
         $userid = $result['user_id'];
         $_SESSION['user_id'] = $userid;    
     }
