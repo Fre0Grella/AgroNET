@@ -24,12 +24,12 @@ margin: 10vh auto 0 auto;
     color: #737373;
 }
 
-@media screen and (max-width:600px) {
+@media only screen and (orientation: portrait) {
 
     .searchBar {
         position: fixed;
         top: 0;
-        width: 100%;
+        width: 100vw;
         height: 10%;
         background: white;
         display: flex;

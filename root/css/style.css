@@ -115,13 +115,15 @@ nav img:hover {
 
 
  
-@media screen and (max-width:600px) {
-  
+@media only screen and (orientation: portrait) {
+    body {
+        overflow-x: hidden;
+    }
     main {
         width: 100%;
-        margin: calc(5vh + 20px) auto;
+        margin: calc(10vh + 20px) auto;
         columns: 2;
-        column-gap: 20px;
+        column-gap: 10px;
 
     }
 
@@ -147,6 +149,8 @@ nav img:hover {
 
     .topBar {
         z-index: 1;
+        background-image: linear-gradient(to left, #97503A, #FDE918, #226037);
+
     }
 
     .slider {
