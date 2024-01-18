@@ -1,6 +1,6 @@
 <?php
 // Connessione al database
-require_once __DIR__ . "../bootstrap.php";
+require_once __DIR__ . "/../bootstrap.php";
 
 
 
@@ -26,9 +26,7 @@ if ($category == 'true') {
 if ($dbh->query($sql) === TRUE) {
     echo "Post salvato con successo.";
 } else {
-    echo "Errore durante il salvataggio del post: " . $dbh->error;
+    echo "Errore durante il salvataggio del post: " . $dbh->error();
 }
-header("Location: ../home.html");
 $dbh->close();
-exit();
 ?>

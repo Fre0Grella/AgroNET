@@ -3,5 +3,15 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  background-image: linear-gradient(to right, #97503A, #FDE918, #226037);;
+}
+
+.btn {
   background-color: #226037 !important;
+  border: none !important;
+  color: #FDE918 !important;
+}
+
+h1 {
+  color: #164827 !important;
 }
