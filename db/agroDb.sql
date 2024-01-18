@@ -27,7 +27,6 @@ CREATE TABLE posts (
     category TINYINT(1) DEFAULT 1,
     image_data LONGBLOB, 
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    likes INT DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
     INDEX fk_user_id (user_id) -- Indice per velocizzare le query che usano la colonna user_id
 );
@@ -74,6 +73,18 @@ CREATE TABLE notifications (
     is_read BOOLEAN NOT NULL DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE post_likes (
+    like_id INT PRIMARY KEY AUTO_INCREMENT,
+    post_id INT,
+    user_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (post_id) REFERENCES posts(post_id) ON DELETE CASCADE, 
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    INDEX fk_post_id (post_id),
+    INDEX fk_user_id (user_id),
+    UNIQUE KEY unique_like (post_id, user_id) -- Assicura che un utente possa mettere like a un post una sola volta
 );
 
 

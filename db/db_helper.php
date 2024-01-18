@@ -115,13 +115,13 @@ class DatabaseHelper {
         $_SESSION['user_id'] = $userid;    
     }
 
-    public function loginCheck($email) {
+    public function loginCheck($email,$password) {
         $stmt = $this->db->prepare("SELECT users.email , users.password
         FROM users
-        WHERE email = ?;
+        WHERE email = ? AND password = ?;
         ");
 
-        $stmt->bind_Param("i", $email);
+        $stmt->bind_Param("ss", $email,$password);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -209,6 +209,31 @@ class DatabaseHelper {
         FROM messages
         WHERE chat_id = ?;");
         $stmt->bind_param("s", $chat_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function newLike($user_id, $post_id) {
+        $stmt = $this->db->prepare("INSERT INTO likes (user_id, post_id) VALUES (?, ?);");
+        $stmt->bind_Param("ii", $user_id, $post_id);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    public function removeLike($user_id, $post_id) {
+        $stmt = $this->db->prepare("DELETE FROM likes WHERE user_id = ? AND post_id = ?;");
+        $stmt->bind_Param("ii", $user_id, $post_id);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    public function getLikesFromPost($post_id) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) AS likes
+        FROM likes
+        WHERE post_id = ?;");
+        $stmt->bind_param("i", $post_id);
         $stmt->execute();
         $result = $stmt->get_result();
 
