@@ -10,11 +10,8 @@ $password = $_POST['password'];
 
 if(!empty($username) || !empty($email) || !empty($password)) {
     $dbh->registerUser($email,$password,$username);
-} else {
-    header("Location: /AgroNET/root/register.html");
-    die();
 }
-   
+  
 $dbh->close();
 ?>
 
