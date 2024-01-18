@@ -5,8 +5,8 @@ $message = $_POST['message'];
 $chat_id = $_POST['chat_id'];
 $user_id = $_SESSION['user_id'];
 
-dbh->createMessage($chat_id, $user_id, $message);
+$dbh->createMessage($chat_id, $user_id, $message);
 
 
-dbh->close();
+$dbh->close();
 ?>

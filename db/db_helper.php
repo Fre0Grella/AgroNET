@@ -115,6 +115,19 @@ class DatabaseHelper {
         $_SESSION['user_id'] = $userid;    
     }
 
+    public function loginCheck($email) {
+        $stmt = $this->db->prepare("SELECT users.email , users.password
+        FROM users
+        WHERE email = ?;
+        ");
+
+        $stmt->bind_Param("i", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+       return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getProfileInfo($user_id) {
         $stmt = $this->db->prepare("SELECT username, profile_picture, bio
         FROM users
