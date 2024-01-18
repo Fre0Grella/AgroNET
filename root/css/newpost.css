@@ -1,4 +1,9 @@
 main {
     padding: 5%;
     columns: 1 !important;
+    margin: 10vh auto;
+}
+
+#preview {
+    max-height: 40%;
 }

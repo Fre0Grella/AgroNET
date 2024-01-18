@@ -40,6 +40,10 @@ main article header {
 
 }
 
+.spacer {
+    height: 15vh;
+}
+
 .change {
     filter: invert(100%);
 }
@@ -118,13 +122,13 @@ nav img:hover {
 @media only screen and (orientation: portrait) {
     body {
         overflow-x: hidden;
+        
     }
     main {
         width: 100%;
         margin: calc(10vh + 20px) auto;
         columns: 2;
         column-gap: 10px;
-
     }
 
     nav {

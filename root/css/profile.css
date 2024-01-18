@@ -23,7 +23,7 @@ main {
         position: fixed;
         top: 0;
         width: 100%;
-        height: 30%;
+        height: 20%;
         background: white;
         display: flex;
         align-items: center;
@@ -35,5 +35,3 @@ main {
     }
 
 }
-
-
