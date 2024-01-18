@@ -47,11 +47,11 @@
         <div class="spacer"></div>
     </div>
         <nav id="botBar">
-            <a href="home.html"><img src="img/icon/home.svg" draggable="false" class="img-fluid p-2 change"></a>
-            <a href="search.html"><img src="img/icon/search.svg" draggable="false" class="img-fluid p-2 change"></a>
+            <a href="home.php"><img src="img/icon/home.svg" draggable="false" class="img-fluid p-2 change"></a>
+            <a href="search.php"><img src="img/icon/search.svg" draggable="false" class="img-fluid p-2 change"></a>
             <a href="newpost.html"><img src="img/icon/addPhoto.svg" draggable="false" class="img-fluid p-2 change"></a>
             <a href="profileSettings.html"><img src="img/icon/settings.svg" draggable="false" class="img-fluid p-2 change"></a>
-            <a href="profile.html"><img src="img/icon/profile.svg" draggable="false" class="img-fluid p-2 change"></a>
+            <a href="profile.php"><img src="img/icon/profile.svg" draggable="false" class="img-fluid p-2 change"></a>
         </nav>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
