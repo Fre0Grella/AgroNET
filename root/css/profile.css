@@ -17,7 +17,7 @@ main {
     max-height: 30vh;
 }
 
-@media screen and (max-width:600px) {
+@media only screen and (orientation: portrait) {
 
     .searchBar {
         position: fixed;
