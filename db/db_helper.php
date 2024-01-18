@@ -23,7 +23,7 @@ class DatabaseHelper {
     }
 
     public function postFromFollowed($user_id) {
-        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at, u.username, u.user_profile
+        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at, u.username, u.profile_image
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
         JOIN users u ON u.user_id = p.user_id
@@ -157,7 +157,7 @@ class DatabaseHelper {
     }
 
     public function getProfileInfo($user_id) {
-        $stmt = $this->db->prepare("SELECT username, profile_picture, bio
+        $stmt = $this->db->prepare("SELECT username, profile_image, bio
         FROM users
         WHERE user_id = ?;
         ");
@@ -194,12 +194,12 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getIdFromUsername($username) {
+    public function getIdFromEmail($email) {
         $stmt = $this->db->prepare("SELECT user_id
         FROM users
-        WHERE username = ?;
+        WHERE email = ?;
         ");
-        $stmt->bind_param("s", $username);
+        $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -281,7 +281,7 @@ class DatabaseHelper {
     }
 
     public function getCommentsFromPost($post_id) {
-        $stmt = $this->db->prepare("SELECT c.comment, u.username, u.user_profile
+        $stmt = $this->db->prepare("SELECT c.comment, u.username, u.profile_image
         FROM comments c
         JOIN users u ON c.user_id = u.user_id
         WHERE c.post_id = ?;");
@@ -293,7 +293,7 @@ class DatabaseHelper {
     }
 
     public function getPostInfo($post_id) {
-        $stmt = $this->db->prepare("SELECT p.image_data, p.description, u.username, u.user_profile
+        $stmt = $this->db->prepare("SELECT p.image_data, p.description, u.username, u.profile_image
         FROM posts p JOIN user u ON p.user_id = u.user_id
         WHERE p.post_id = ?;");
 

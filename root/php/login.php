@@ -4,11 +4,12 @@ require_once __DIR__ . '/../bootstrap.php';
 
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $result = $dbh->loginCheck($email,$password); 
+    $result = $dbh->loginCheck($email,$password);
 
     if (count($result) > 0) {
-        $dbh->
-        $dbh->$_SESSION["user_id"] =
+        $id = $dbh->getIdFromEmail($email);
+
+        $_SESSION["user_id"] = $id;
         header("Location: ../home.php");
         $dbh->close();
 
