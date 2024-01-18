@@ -36,7 +36,7 @@ main article header {
     position: fixed;
     right: 0;
     top: 0;
-    background-image: linear-gradient( #97503A, #FDE918, #226037);
+    background-image: linear-gradient(to top, #97503A, #FDE918, #226037);
 
 }
 
@@ -176,10 +176,10 @@ nav img:hover {
     .slider::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        width: 9vh;
+        width: 11vh;
         height: 9vh;
         background: darkgrey;
-        border-radius: 15px;
+        border-radius: 50px;
         border: solid 5px gray;
         cursor: pointer;
 
@@ -189,10 +189,10 @@ nav img:hover {
     .slider::-moz-range-thumb {
         -webkit-appearance: none;
         appearance: none;
-        width: 9vh;
+        width: 11vh;
         height: 9vh;
         background: darkgrey;
-        border-radius: 15px;
+        border-radius: 50px;
         border: solid 5px gray;
         cursor: pointer;
     }
