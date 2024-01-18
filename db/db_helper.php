@@ -88,6 +88,40 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function GreenrandomPost($user_id) {
+        $stmt = $this->db->prepare("SELECT p.description, p.category, p.image_data, p.created_at, p.likes
+        FROM posts p
+        WHERE category = 1 AND p.user_id NOT IN (
+            SELECT followed_id
+            FROM followers
+            WHERE follower_id = ?
+        )
+        ORDER BY RAND()
+        LIMIT 50;");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function TractorandomPost($user_id) {
+        $stmt = $this->db->prepare("SELECT p.description, p.category, p.image_data, p.created_at, p.likes
+        FROM posts p
+        WHERE category = 0 AND p.user_id NOT IN (
+            SELECT followed_id
+            FROM followers
+            WHERE follower_id = ?
+        )
+        ORDER BY RAND()
+        LIMIT 50;");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getNotifications($user_id) {
         $stmt = $this->db->prepare("SELECT notification_text
         FROM notifications
