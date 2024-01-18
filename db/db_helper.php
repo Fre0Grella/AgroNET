@@ -193,6 +193,18 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getIdFromUsername($username) {
+        $stmt = $this->db->prepare("SELECT user_id
+        FROM users
+        WHERE username = ?;
+        ");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
     
     public function getSearchAdvide($search) {
         $stmt = $this->db->prepare("SELECT username, profile_image
