@@ -4,6 +4,7 @@ require_once __DIR__ . '/../bootstrap.php';
 if(isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
+    echo($email+$password);
 
     if (empty($email) || empty($password)) {
        echo 'Inserisci email e password %s';

@@ -36,6 +36,11 @@ margin: 10vh auto 0 auto;
         align-items: center;
         border:none;
         margin-top: 10vh;
+        z-index: 0;
+    }
+
+    main {
+        margin-top: 20vh;
     }
 
 }
