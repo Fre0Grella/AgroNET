@@ -12,6 +12,28 @@ main {
     color: #226037;
 }
 
+
 #profilePic {
-    max-height: 40vh;
+    max-height: 30vh;
 }
+
+@media screen and (max-width:600px) {
+
+    .searchBar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 30%;
+        background: white;
+        display: flex;
+        align-items: center;
+        border:none;
+        margin-top: 10vh
+    }
+    #profilePic {
+        max-height: none;
+    }
+
+}
+
+
