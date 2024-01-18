@@ -35,7 +35,7 @@ class DatabaseHelper {
     }
 
     public function postGreenFromFollowed($user_id) {
-        $stmt = $this->db->prepare("SELECT p.post_id, p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
         WHERE f.follower_id = ? AND p.category = 1
@@ -51,7 +51,7 @@ class DatabaseHelper {
     }
 
     public function postTractorFromFollowed($user_id) {
-        $stmt = $this->db->prepare("SELECT p.post_id, p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
         WHERE f.follower_id = ? AND p.category = 0
@@ -67,7 +67,7 @@ class DatabaseHelper {
     }
 
     public function randomPost($user_id) {
-        $stmt = $this->db->prepare("SELECT p.post_id, p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
         WHERE p.user_id NOT IN (
             SELECT followed_id
@@ -124,7 +124,7 @@ class DatabaseHelper {
         $stmt->close();
     }
 
-    public function getProfile($user_id) {
+    public function getProfileInfo($user_id) {
         $stmt = $this->db->prepare("SELECT username, profile_picture, bio
         FROM users
         WHERE user_id = ?;
@@ -135,6 +135,37 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getPostsFromId($user_id) {
+        $stmt = $this->db->prepare("SELECT p.user_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        FROM posts p
+        WHERE p.user_id = ?
+        ORDER BY p.likes DESC
+        LIMIT 50;
+        ");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getUsernameFromId($user_id) {
+        $stmt = $this->db->prepare("SELECT username
+        FROM users
+        WHERE user_id = ?;
+        ");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    
+
+
+
 
 }
 
