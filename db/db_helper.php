@@ -112,18 +112,16 @@ class DatabaseHelper {
     public function registerUser($email,$password,$username) {
         $stmt = $this->db->prepare("INSERT INTO users (email, password, username) VALUES (?, ?, ?);");
         $stmt->bindParam("sss", $email, $password, $username);
-        if ($stmt->execute()) {
-            // Registrazione riuscita
-            echo json_encode(array('success' => true));
-        } else {
-            // Registrazione fallita
-            echo json_encode(array('success' => false, 'error' => $stmt->error));
-        }
-
+        $stmt->execute;
         $stmt->close();
-        $user_id = $stmt->insert_id; 
-        $_SESSION['user_id'] = $user_id;;
 
+        $stmt = $this->db->prepare("SELECT  user_id FROM users WHERE username = ?;");
+        $stmt->bindParam("s", $username);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $userid = $result['user_id'];
+        $_SESSION['user_id'] = $userid;
+        $stmt->close();
     }
 
 }
