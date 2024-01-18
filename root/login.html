@@ -20,7 +20,7 @@
             </div>
         </div>
         
-        <form  id="loginForm" class="container justify-content-center col-10 offset-1">
+        <form action="php/login.php" method="post" id="loginForm" class="container justify-content-center col-10 offset-1">
 
             <div class="form-group">
                 <label for="email" class="form-label">Email address</label>
@@ -32,7 +32,7 @@
                 <input type="password" name="password" id="password" class="form-control" required/>
 				<i class="bi bi-eye-slash" id="togglePassword"></i>
             </div>
-            <button class="btn btn-success btn-block" type="button" onclick="loginCheck()" >Log in</button>
+            <button class="btn btn-success btn-block" type="submit"  >Log in</button>
         </form>
 
         <div class="conteiner-fluid text-center p-3">

@@ -6,13 +6,3 @@ togglePassword.addEventListener('click', () => {
         password.setAttribute('type', type);
         document.getElementById("togglePassword").classList.toggle('bi-eye');
 });
-
-function loginCheck() {
-  var form = document.getElementById('loginForm');
-  var formData = new FormData(form);
-        
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/AgroNET/root/php/login.php', true);
-  xhr.send(formData);
-
-}
