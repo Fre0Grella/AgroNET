@@ -23,7 +23,7 @@ class DatabaseHelper {
     }
 
     public function postFromFollowed($user_id) {
-        $stmt = $this->db->prepare("SELECT p.description, p.category, p.image_data, p.created_at, p.likes, u.username, u.user_profile
+        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at, p.likes, u.username, u.user_profile
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
         JOIN users u ON u.user_id = p.user_id
@@ -40,7 +40,7 @@ class DatabaseHelper {
     }
 
     public function postGreenFromFollowed($user_id) {
-        $stmt = $this->db->prepare("SELECT p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
         WHERE f.follower_id = ? AND p.category = 1
@@ -56,7 +56,7 @@ class DatabaseHelper {
     }
 
     public function postTractorFromFollowed($user_id) {
-        $stmt = $this->db->prepare("SELECT  p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.post_id,  p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
         WHERE f.follower_id = ? AND p.category = 0
@@ -72,9 +72,43 @@ class DatabaseHelper {
     }
 
     public function randomPost($user_id) {
-        $stmt = $this->db->prepare("SELECT p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.post_id p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
         WHERE p.user_id NOT IN (
+            SELECT followed_id
+            FROM followers
+            WHERE follower_id = ?
+        )
+        ORDER BY RAND()
+        LIMIT 50;");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function GreenrandomPost($user_id) {
+        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        FROM posts p
+        WHERE category = 1 AND p.user_id NOT IN (
+            SELECT followed_id
+            FROM followers
+            WHERE follower_id = ?
+        )
+        ORDER BY RAND()
+        LIMIT 50;");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function TractorandomPost($user_id) {
+        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        FROM posts p
+        WHERE category = 0 AND p.user_id NOT IN (
             SELECT followed_id
             FROM followers
             WHERE follower_id = ?
@@ -246,10 +280,18 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getPostInfo($post_id) {
+        $stmt = $this->db->prepare("SELECT p.image_data, p.description, u.username, u.user_profile
+        FROM posts p JOIN user u ON p.user_id = u.user_id
+        WHERE p.post_id = ?;");
 
+        $stmt->bind_param("i", $post_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-    
-    
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 
 ?>
