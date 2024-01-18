@@ -109,6 +109,19 @@ class DatabaseHelper {
        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    function registerCheck($email) {
+        $stmt = $this->db->prepare("SELECT users.email
+        FROM users
+        WHERE email = ?;
+        ");
+
+        $stmt->bindParam("i", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+       return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 
 ?>
