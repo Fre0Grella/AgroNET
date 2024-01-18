@@ -124,6 +124,18 @@ class DatabaseHelper {
         $stmt->close();
     }
 
+    public function getProfile($user_id) {
+        $stmt = $this->db->prepare("SELECT username, profile_picture, bio
+        FROM users
+        WHERE user_id = ?;
+        ");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 
 ?>
