@@ -19,7 +19,7 @@
         <div class="main-spacer">
         <main>
         <?php foreach($templateParams["allPost"] as $postFeed): ?>
-            <article>
+            <article id="<?php echo $postFeed["post_id"];?>">
                 <div class="row justify-content-around">
                     <div class="col-12">
                         <img src="<?php echo $postFeed["image_data"]; ?>" class="img-fluid">
