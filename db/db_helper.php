@@ -18,6 +18,10 @@ class DatabaseHelper {
         $this->db->close();
     }
 
+    public function error() {
+        return $this->db->error;
+    }
+
     public function postFromFollowed($user_id) {
         $stmt = $this->db->prepare("SELECT p.description, p.category, p.image_data, p.created_at, p.likes
         FROM posts p
@@ -99,12 +103,12 @@ class DatabaseHelper {
 
     public function registerUser($email,$password,$username) {
         $stmt = $this->db->prepare("INSERT INTO users (email, password, username) VALUES (?, ?, ?);");
-        $stmt->bindParam("sss", $email, $password, $username);
-        $stmt->execute;
+        $stmt->bind_Param("sss", $email, $password, $username);
+        $stmt->execute();
         $stmt->close();
 
         $stmt = $this->db->prepare("SELECT  user_id FROM users WHERE username = ?;");
-        $stmt->bindParam("s", $username);
+        $stmt->bind_Param("s", $username);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $userid = $result['user_id'];
@@ -164,8 +168,8 @@ class DatabaseHelper {
 
     public function createChat($username, $username2) {
         $stmt = $this->db->prepare("INSERT INTO chats (chat_id) VALUES (CONCAT(?, ?));");
-        $stmt->bindParam("ss", $username, $username2);
-        $stmt->execute;
+        $stmt->bind_Param("ss", $username, $username2);
+        $stmt->execute();
         $stmt->close();
     }
 
@@ -182,8 +186,8 @@ class DatabaseHelper {
     
     public function createMessage($chat_id, $user_id, $message) {
         $stmt = $this->db->prepare("INSERT INTO messages (chat_id, user_id, message) VALUES (?, ?, ?);");
-        $stmt->bindParam("sis", $chat_id, $user_id, $message);
-        $stmt->execute;
+        $stmt->bind_Param("sis", $chat_id, $user_id, $message);
+        $stmt->execute();
         $stmt->close();
     }
 

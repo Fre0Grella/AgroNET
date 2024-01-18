@@ -26,7 +26,7 @@ if ($category == 'true') {
 if ($dbh->query($sql) === TRUE) {
     echo "Post salvato con successo.";
 } else {
-    echo "Errore durante il salvataggio del post: " . $dbh->error;
+    echo "Errore durante il salvataggio del post: " . $dbh->error();
 }
 $dbh->close();
 ?>
