@@ -108,8 +108,7 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $userid = $result['user_id'];
-        $_SESSION['user_id'] = $userid;
-        $stmt->close();
+        $_SESSION['user_id'] = $userid;    
     }
 
     public function getProfileInfo($user_id) {
@@ -150,7 +149,7 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     
-     public function getSearchAdvide($search) {
+    public function getSearchAdvide($search) {
         $stmt = $this->db->prepare("SELECT username, profile_image
         FROM users
         WHERE username LIKE ?;
@@ -162,6 +161,26 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
 
     }
+
+    public function createChat($username, $username2) {
+        $stmt = $this->db->prepare("INSERT INTO chats (chat_id) VALUES (CONCAT(?, ?));");
+        $stmt->bindParam("ss", $username, $username2);
+        $stmt->execute;
+        $stmt->close();
+    }
+
+    public function getChatFromUsername($username) {
+        $stmt = $this->db->prepare("SELECT *
+        FROM chats
+        WHERE chat_id LIKE ?;");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+
     
     
 }
