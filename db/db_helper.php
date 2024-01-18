@@ -275,6 +275,18 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getPostInfo($post_id) {
+        $stmt = $this->db->prepare("SELECT p.image_data, p.description, u.username, u.user_profile
+        FROM posts p JOIN user u ON p.user_id = u.user_id
+        WHERE p.post_id = ?;");
+
+        $stmt->bind_param("i", $post_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 
 
     
