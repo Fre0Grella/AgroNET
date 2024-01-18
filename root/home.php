@@ -1,8 +1,8 @@
 <?php
 require_once("bootstrap.php");
-print_r($_SESSION["user_id"]);
-$user_id = $_SESSION["user_id"];
 
+$user_id = $_SESSION["user_id"];
+print_r($user_id);
 $templateParams["title"] = "AgroNET - Home";
 $templateParams["greenPost"] = $dbh->postGreenFromFollowed($user_id);
 $templateParams["tractorPost"] = $dbh->postTractorFromFollowed($user_id);

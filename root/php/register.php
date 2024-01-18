@@ -10,7 +10,7 @@ $password = $_POST['password'];
 
 $result = $dbh->isRegistered($email,$username);
 
-if($count($result) == 0) {
+if(count($result) == 0) {
     $dbh->registerUser($email,$password,$username);
     header("Location: ../home.php");
 }

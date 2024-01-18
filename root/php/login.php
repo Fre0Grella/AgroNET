@@ -9,7 +9,7 @@ require_once __DIR__ . '/../bootstrap.php';
     if (count($result) > 0) {
         $id = $dbh->getIdFromEmail($email);
 
-        $_SESSION["user_id"] = $id;
+        $_SESSION["user_id"] = $id[0]['user_id'];
         header("Location: ../home.php");
         $dbh->close();
 
