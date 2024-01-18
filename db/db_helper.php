@@ -179,6 +179,25 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+    
+    public function createMessage($chat_id, $user_id, $message) {
+        $stmt = $this->db->prepare("INSERT INTO messages (chat_id, user_id, message) VALUES (?, ?, ?);");
+        $stmt->bindParam("sis", $chat_id, $user_id, $message);
+        $stmt->execute;
+        $stmt->close();
+    }
+
+    public function getMessagesFromChat($chat_id) {
+        $stmt = $this->db->prepare("SELECT *
+        FROM messages
+        WHERE chat_id = ?;");
+        $stmt->bind_param("s", $chat_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 
 
     
