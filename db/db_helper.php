@@ -96,18 +96,6 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function loginCheck($email) {
-        $stmt = $this->db->prepare("SELECT users.email , users.password
-        FROM users
-        WHERE email = ?;
-        ");
-
-        $stmt->bindParam("i", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-       return $result->fetch_all(MYSQLI_ASSOC);
-    }
 
     public function registerUser($email,$password,$username) {
         $stmt = $this->db->prepare("INSERT INTO users (email, password, username) VALUES (?, ?, ?);");
