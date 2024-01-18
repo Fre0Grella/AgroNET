@@ -23,12 +23,12 @@ class DatabaseHelper {
     }
 
     public function postFromFollowed($user_id) {
-        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at, p.likes, u.username, u.user_profile
+        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at, u.username, u.user_profile
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
         JOIN users u ON u.user_id = p.user_id
         WHERE f.follower_id = ?
-        ORDER BY p.likes DESC
+        ORDER BY p.created_at DESC
         LIMIT 50;
         ");
         $stmt->bind_param("i", $user_id);
@@ -40,11 +40,11 @@ class DatabaseHelper {
     }
 
     public function postGreenFromFollowed($user_id) {
-        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
         WHERE f.follower_id = ? AND p.category = 1
-        ORDER BY p.likes DESC
+        ORDER BY p.created_at DESC
         LIMIT 50;
         ");
         $stmt->bind_param("i", $user_id);
@@ -56,11 +56,11 @@ class DatabaseHelper {
     }
 
     public function postTractorFromFollowed($user_id) {
-        $stmt = $this->db->prepare("SELECT p.post_id,  p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.post_id,  p.description, p.category, p.image_data, p.created_at
         FROM posts p
         JOIN followers f ON p.user_id = f.followed_id
         WHERE f.follower_id = ? AND p.category = 0
-        ORDER BY p.likes DESC
+        ORDER BY p.created_at DESC
         LIMIT 50;
         ");
         $stmt->bind_param("i", $user_id);

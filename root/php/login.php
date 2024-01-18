@@ -7,7 +7,9 @@ require_once __DIR__ . '/../bootstrap.php';
     $result = $dbh->loginCheck($email,$password); 
 
     if (count($result) > 0) {
-        header("Location: ../home.html");
+        $dbh->
+        $dbh->$_SESSION["user_id"] =
+        header("Location: ../home.php");
         $dbh->close();
 
         exit();
