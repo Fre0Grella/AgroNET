@@ -1,4 +1,4 @@
-function logout() {
+function logout() { //this file still not work as expected
     $.ajax({
         type: "POST",
         url: "logout.php",

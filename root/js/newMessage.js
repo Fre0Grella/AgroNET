@@ -3,7 +3,7 @@ function createMessage() {
     var formData = new FormData(form);
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/root/php/save_message.php', true);
+    xhr.open('POST', 'AgroNET/root/php/save_message.php', true);
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             alert("Message sent");

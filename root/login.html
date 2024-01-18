@@ -19,20 +19,22 @@
                   </div>
             </div>
         </div>
-        <form action="/AgroNET/root/home.html" method="post" class="container justify-content-center col-10 offset-1">
-            <div class="email p-2">
-                <label for="emailinput" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="emailinput" placeholder="name@example.com">
+        
+        <form  id="loginForm" class="container justify-content-center col-10 offset-1">
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
             </div>
-            <div class="pass p-2">
+
+            <div class="form-group">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" id="password" class="form-control"/>
+                <input type="password" name="password" id="password" class="form-control" required/>
 				<i class="bi bi-eye-slash" id="togglePassword"></i>
             </div>
-            <div class="button-login col-12 text-center p-2" onclick="loginCheck();">
-                <button class="btn col-4 " type="submit">Login</button>
-            </div>
+            <button class="btn btn-success btn-block" type="button" onclick="loginCheck()" >Log in</button>
         </form>
+
         <div class="conteiner-fluid text-center p-3">
             <label>Don't have an account?</label>
             <a href="register.html">Sign up</a>
