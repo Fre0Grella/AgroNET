@@ -15,6 +15,6 @@ $templateParams["likeNumber"] = $dbh->getLikesFromPost($post_id);
 $templateParams["comment"] = $dbh->getCommentFromPost($post_id);
 
 
-require("template/postView.php");
+require("template/postViewTemplate.php");
 
 ?>

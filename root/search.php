@@ -8,6 +8,6 @@ $templateParams["greenPost"] = $dbh->GreenrandomPost($user_id);
 $templateParams["tractorPost"] = $dbh->TractorandomPost($user_id);
 $templateParams["allPost"] = $dbh->randomPost($user_id);
 
-require("template/search.php");
+require("template/searchTemplate.php");
 
 ?>

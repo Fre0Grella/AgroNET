@@ -72,7 +72,7 @@ class DatabaseHelper {
     }
 
     public function randomPost($user_id) {
-        $stmt = $this->db->prepare("SELECT p.post_id p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at
         FROM posts p
         WHERE p.user_id NOT IN (
             SELECT followed_id
@@ -89,7 +89,7 @@ class DatabaseHelper {
     }
 
     public function GreenrandomPost($user_id) {
-        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at
         FROM posts p
         WHERE category = 1 AND p.user_id NOT IN (
             SELECT followed_id
@@ -106,7 +106,7 @@ class DatabaseHelper {
     }
 
     public function TractorandomPost($user_id) {
-        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at, p.likes
+        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at
         FROM posts p
         WHERE category = 0 AND p.user_id NOT IN (
             SELECT followed_id

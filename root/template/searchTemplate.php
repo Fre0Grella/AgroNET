@@ -32,13 +32,13 @@
             <article id="<?php echo $postFeed["post_id"];?>">
                 <div class="row justify-content-around">
                     <div class="col-12">
-                        <img src="<?php echo $postFeed["image_data"];?>" class="img-fluid">
+                        <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode( $postFeed["image_data"] ) .'"';?>" class="img-fluid">
                     </div>
                     <div class="col-8">
                         <header> <?php echo $postFeed["username"];?> </header>
                     </div>
                     <div class="col-2 p-0">
-                        <img src="<?php echo $postFeed["user_profile"];?>" class="img-fluid">
+                        <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode( $postFeed["user_profile"] ) .'"';?>" class="img-fluid">
                     </div>
                 </div> 
             </article>

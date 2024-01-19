@@ -12,6 +12,8 @@ $result = $dbh->isRegistered($email,$username);
 
 if(count($result) == 0) {
     $dbh->registerUser($email,$password,$username);
+    $id = $dbh->getIdFromEmail($email);
+    $_SESSION['user_id']= $id[0]['user_id'];
     header("Location: ../home.php");
 }
   
