@@ -67,8 +67,8 @@ class DataBaseReader extends SimpleDB {
     }
 
     /**
-     * @param $user_id
-     * @return array
+     * @param $user_id, current user active
+     * @return array of associative arrays holding username, profile_image,bio
      */
     public function getProfileInfo($user_id): array
     {
@@ -84,8 +84,8 @@ class DataBaseReader extends SimpleDB {
     }
 
     /**
-     * @param $user_id
-     * @return array
+     * @param $user_id, current active user
+     * @return array of associative arrays holding description, category, image_data, created_at
      */
     public function getPostsFromId($user_id): array
     {
@@ -102,8 +102,8 @@ class DataBaseReader extends SimpleDB {
     }
 
     /**
-     * @param $user_id
-     * @return array
+     * @param $user_id, current user active
+     * @return array of associative arrays holding username of the current user
      */
     public function getUsernameFromId($user_id): array
     {
@@ -119,8 +119,8 @@ class DataBaseReader extends SimpleDB {
     }
 
     /**
-     * @param $email
-     * @return array
+     * @param $email, of the users
+     * @return array of associative arrays holding user_id
      */
     public function getIdFromEmail($email): array
     {
@@ -136,10 +136,10 @@ class DataBaseReader extends SimpleDB {
     }
 
     /**
-     * @param $search
-     * @return array
+     * @param $search string typed by the user
+     * @return array of associative arrays holding username and profile_image
      */
-    public function getSearchAdvice($search): array
+    public function getSearchAdvice(string $search): array
     {
         $stmt = $this->db->prepare("SELECT username, profile_image
         FROM users
@@ -155,8 +155,8 @@ class DataBaseReader extends SimpleDB {
     }
 
     /**
-     * @param $post_id
-     * @return array
+     * @param $post_id, id of a post
+     * @return array of associative arrays holding comment_text, username, profile_image
      */
     public function getCommentsFromPostId($post_id): array
     {
@@ -172,8 +172,8 @@ class DataBaseReader extends SimpleDB {
     }
 
     /**
-     * @param $post_id
-     * @return array
+     * @param $post_id, id of a post
+     * @return array of associative arrays holding image_data, description, username, profile_image
      */
     public function getPostInfo($post_id): array
     {
