@@ -1,0 +1,193 @@
+<?php
+
+require_once __DIR__ . "/simpleDB.php";
+class DataBaseReader extends SimpleDB {
+
+
+    /**
+     * @param $user_id, id of the current user
+     * @return array of associative arrays holding green random post
+     */
+    public function GreenRandomPost($user_id): array
+    {
+        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at
+        FROM posts p
+        WHERE category = 1 AND p.user_id NOT IN (
+            SELECT followed_id
+            FROM followers
+            WHERE follower_id = ?
+        )
+        ORDER BY RAND()
+        LIMIT 50;");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * @param $user_id, id of the current users
+     * @return array of associative arrays holding tractor random post
+     */
+    public function TractoRandomPost($user_id): array
+    {
+        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at
+        FROM posts p
+        WHERE category = 0 AND p.user_id NOT IN (
+            SELECT followed_id
+            FROM followers
+            WHERE follower_id = ?
+        )
+        ORDER BY RAND()
+        LIMIT 50;");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * @param $user_id, id o current user
+     * @return array of associative arrays with notification_text
+     */
+    public function getNotifications($user_id): array
+    {
+        $stmt = $this->db->prepare("SELECT notification_text
+        FROM notifications
+        WHERE user_id = ?
+        ORDER BY created_at DESC;
+        ");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * @param $user_id
+     * @return array
+     */
+    public function getProfileInfo($user_id): array
+    {
+        $stmt = $this->db->prepare("SELECT username, profile_image, bio
+        FROM users
+        WHERE user_id = ?;
+        ");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * @param $user_id
+     * @return array
+     */
+    public function getPostsFromId($user_id): array
+    {
+        $stmt = $this->db->prepare("SELECT p.description, p.category, p.image_data, p.created_at
+        FROM posts p
+        WHERE p.user_id = ?
+        LIMIT 50;
+        ");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * @param $user_id
+     * @return array
+     */
+    public function getUsernameFromId($user_id): array
+    {
+        $stmt = $this->db->prepare("SELECT username
+        FROM users
+        WHERE user_id = ?;
+        ");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * @param $email
+     * @return array
+     */
+    public function getIdFromEmail($email): array
+    {
+        $stmt = $this->db->prepare("SELECT user_id
+        FROM users
+        WHERE email = ?;
+        ");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * @param $search
+     * @return array
+     */
+    public function getSearchAdvice($search): array
+    {
+        $stmt = $this->db->prepare("SELECT username, profile_image
+        FROM users
+        WHERE username LIKE ?;
+        ");
+        $stmt->bind_param("s", $search);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+
+
+    }
+
+    /**
+     * @param $post_id
+     * @return array
+     */
+    public function getCommentsFromPostId($post_id): array
+    {
+        $stmt = $this->db->prepare("SELECT c.comment_text, u.username, u.profile_image
+        FROM comments c
+        JOIN users u ON c.user_id = u.user_id
+        WHERE c.post_id = ?;");
+        $stmt->bind_param("i", $post_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * @param $post_id
+     * @return array
+     */
+    public function getPostInfo($post_id): array
+    {
+        $stmt = $this->db->prepare("SELECT p.image_data, p.description, u.username, u.profile_image
+        FROM posts p JOIN users u ON p.user_id = u.user_id
+        WHERE p.post_id = ?;");
+
+        $stmt->bind_param("i", $post_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+}
+
+
