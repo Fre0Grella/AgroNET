@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
-        <title><?php echo $templateParams["titolo"]?></title>
+        <title><?php echo $templateParams["title"]?></title>
         <meta charset="UTF-8"/>   
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
