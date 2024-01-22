@@ -29,4 +29,5 @@ if ($dbh->query($sql) === TRUE) {
     echo "Errore durante il salvataggio del post: " . $dbh->error();
 }
 $dbh->close();
+header("Location: ../home.html");
 ?>
