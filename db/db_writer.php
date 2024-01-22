@@ -42,6 +42,18 @@ class DataBaseWriter extends DataBaseReader{
         $stmt->bind_Param("sis", $chat_id, $user_id, $message);
         $stmt->execute();
         $stmt->close();
+
+        $result = $this->getUsernameFromId($user_id);
+        $sender = $result['username'];
+
+        $receiver = str_replace($sender,"",$chat_id);
+        $result = $this->getIdFromUsername($receiver);
+        $receiverID = $result['user_id'];
+        $text = "New message from $sender";
+        $stmt = $this->db->prepare("INSERT INTO notifications (user_id, notification_text) VALUES (?,?)");
+        $stmt->bind_param("is",$receiverID,$text);
+        $stmt->execute();
+        $stmt->close();
     }
 
     /**

@@ -14,14 +14,16 @@ class SimpleDB {
     public function __construct($servername, $username, $password, $dbname, $port) {
         $this->db = new mysqli($servername, $username, $password, $dbname, $port);
         if ($this->db->connect_error) {
-            die("Connection failed: " . $db->connect_error);
+            die("Connection failed: " . $this->db->connect_error);
         }
     }
+
     /**
      * @param string $sql The SQL query to execute, with no placeholder
-     * @return False on failure. True on success only for INSERT, UPDATE, DELETE. Other queries return the result object.
+     * @return bool|mysqli_result False on failure. True on success only for INSERT, UPDATE, DELETE. Other queries return the result object.
      */
-    public function query(string $sql) {
+    public function query(string $sql) : bool|mysqli_result
+    {
         return $this->db->query($sql);
     }
 
