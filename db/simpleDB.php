@@ -103,8 +103,9 @@ class SimpleDB {
      */
     public function randomPost($user_id): array
     {
-        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at
+        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at, u.username, u.profile_image
         FROM posts p
+        JOIN users u ON p.user_id = u.user_id
         WHERE p.user_id NOT IN (
             SELECT followed_id
             FROM followers
