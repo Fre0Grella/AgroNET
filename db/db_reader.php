@@ -188,6 +188,19 @@ class DataBaseReader extends SimpleDB {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /**
+     * @param $username, username of the users that we want to take id
+     * @return array associative array with the  user_id
+     */
+    public function getIdFromUsername($username): array
+    {
+        $stmt = $this->db->prepare("SELECT user_id FROM users WHERE username = ?");
+        $stmt->bind_param("s",$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 
 
