@@ -2,12 +2,15 @@
 require_once("bootstrap.php");
 
 $user_id = $_SESSION["user_id"];
-$templateParams["title"] = "AgroNET - Home";
+$templateParams["title"] = "AgroNET - Profile";
+$temp = $dbh->getProfileInfo($user_id);
+$templateParams["info"] = $temp[0];
+$templateParams["like"] = $dbh->get
 $templateParams["greenPost"] = $dbh->postGreenFromFollowed($user_id);
 $templateParams["tractorPost"] = $dbh->postTractorFromFollowed($user_id);
 $templateParams["allPost"] = $dbh->postFromFollowed($user_id);
 
 
-require("template/homeTemplate.php");
+require("template/profileTemplate.php");
 
 ?>
