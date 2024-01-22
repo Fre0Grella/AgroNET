@@ -89,7 +89,7 @@ class DataBaseReader extends SimpleDB {
      */
     public function getPostsFromId($user_id): array
     {
-        $stmt = $this->db->prepare("SELECT p.description, p.category, p.image_data, p.created_at
+        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at
         FROM posts p
         WHERE p.user_id = ?
         LIMIT 50;
@@ -182,6 +182,21 @@ class DataBaseReader extends SimpleDB {
         WHERE p.post_id = ?;");
 
         $stmt->bind_param("i", $post_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getNumberOfLikesFromUser($user_id): array
+    {
+        $stmt = $this->db->prepare("SELECT l.post_id, count(*) as nLike
+        FROM post_likes l
+        RIGHT JOIN posts p ON l.post_id = p.post_id
+        WHERE p.user_id = ?
+        GROUP BY l.post_id;");
+
+        $stmt->bind_param("i", $user_id);
         $stmt->execute();
         $result = $stmt->get_result();
 

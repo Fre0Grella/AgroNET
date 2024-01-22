@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
-        <title><?php echo $templateParams["nome"]?></title>
+        <title><?php echo $templateParams["title"]?></title>
         <meta charset="UTF-8"/>   
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link href="css/search.css" rel="stylesheet" type="text/css"/>

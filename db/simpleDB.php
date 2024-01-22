@@ -106,14 +106,14 @@ class SimpleDB {
         $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at, u.username, u.profile_image
         FROM posts p
         JOIN users u ON p.user_id = u.user_id
-        WHERE p.user_id NOT IN (
+        WHERE p.user_id != ? AND p.user_id NOT IN (
             SELECT followed_id
             FROM followers
             WHERE follower_id = ?
         )
         ORDER BY RAND()
         LIMIT 50;");
-        $stmt->bind_param("i", $user_id);
+        $stmt->bind_param("ii", $user_id,$user_id);
         $stmt->execute();
         $result = $stmt->get_result();
 

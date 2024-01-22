@@ -39,6 +39,11 @@ margin: 10vh auto 0 auto;
         z-index: 0;
     }
 
+    .searchBar input {
+        font-size: 4rem;
+        border-radius: 50px;
+    }
+
     main {
         margin-top: 20vh;
     }

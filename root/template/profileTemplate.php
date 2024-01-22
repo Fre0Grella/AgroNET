@@ -50,14 +50,16 @@
                     </div>
                 </div>
             </div>
-        <?php foreach($templateParams["allPost"] as $postFeed): ?>
+
+            <?php foreach($templateParams["allPost"] as $postFeed): ?>
+            <?php /*print_r($templateParams["like"]);*/ ?>
             <article id="<?php echo $postFeed["post_id"];?>">
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode( $postFeed["image_data"] ) .'"';?>" class="img-fluid">
                     </div>
                     <div class="col-9 p-1">
-                        <h5 class="text-end ">15</h5>
+                        <h5 class="text-end "><?php ?></h5>
                     </div>
                     <div class="col-2 p-0">
                         <img src="img/icon/hearth.svg" class="img-fluid">
@@ -65,7 +67,7 @@
                     
                 </div>
             </article>
-        <?php endforeach; ?>              
+            <?php endforeach; ?>              
         </main>
         <div class="spacer"></div>
     </div>
