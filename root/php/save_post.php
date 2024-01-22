@@ -23,11 +23,7 @@ if ($category == 'true') {
 }
 
 
-if ($dbh->query($sql) === TRUE) {
-    echo "Post salvato con successo. ". $userId;
-} else {
-    echo "Errore durante il salvataggio del post: " . $dbh->error();
-}
+$dbh->query($sql);
 $dbh->close();
-header("Location: ../home.html");
+header("Location: ../home.php");
 ?>
