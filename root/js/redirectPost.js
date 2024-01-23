@@ -1,7 +1,8 @@
-var posts = document.getElementsByTagName("article");
-
+let posts = document.getElementsByTagName("article");
+console.log(posts);
 for (i = 0; i < posts.length; i++) {
+    const id = posts[i].id;
     posts[i].addEventListener('click', function(event) {
-        windows.location.href = "postView.php?id="+posts[i].id;
+        window.location.href = "postView.php?id="+id;
     }) 
 }

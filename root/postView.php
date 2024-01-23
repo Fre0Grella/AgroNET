@@ -9,10 +9,11 @@ if (isset($_GET["id"])) {
 }
 
 
-$templateParams["title"] = "AgroNET - Post:"+$post_id;
-$templateParams["postInfo"] = $dbh->getPostInfo($user_id);
-$templateParams["likeNumber"] = $dbh->getLikesFromPost($post_id);
-$templateParams["comment"] = $dbh->getCommentFromPost($post_id);
+$templateParams["title"] = "AgroNET - Post";
+$temp = $dbh->getPostInfo($post_id);
+$templateParams["postInfo"] = $temp[0];
+$templateParams["likeNumber"] = 0/*$dbh->getLikesFromPost($post_id)*/;
+$templateParams["comment"] = $dbh->getCommentsFromPostId($post_id);
 
 
 require("template/postViewTemplate.php");

@@ -28,7 +28,11 @@
                         <header class="text-truncate"> <?php echo $postFeed["username"];?> </header>
                     </div>
                     <div class="col-2 p-0">
-                        <img src="<?php echo $postFeed["user_profile"]; ?>" class="img-fluid">
+                        <img src="<?php if (!array_key_exists("user_profile",$postFeed)) {
+                            echo 'img/defaultUserProfile.svg';
+                        } else {
+                            echo 'data:image/jpeg;base64,' . base64_encode( $postFeed["user_profile"] ) .'"';
+                        } ?>" class="img-fluid">
                     </div>
                 </div> 
             </article>
@@ -48,5 +52,6 @@
         crossorigin="anonymous">
       </script>
       <script src="js/slider.js"></script>
+      <script src="js/redirectPost.js"></script>
     </body>
 </html>
