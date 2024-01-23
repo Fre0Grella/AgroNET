@@ -15,8 +15,8 @@ require_once __DIR__ . '/../bootstrap.php';
 
         exit();
     } else {
-        print_r("Login failed");
-        header("Location: ../login.html");
+        $_SESSION["message"] = "Credenziali errate!!!";
+        header("Location: ../loginPage.php");
         $dbh->close();
         exit();
     }
