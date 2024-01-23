@@ -62,5 +62,6 @@
         crossorigin="anonymous">
       </script>
       <script src="js/slider.js"></script>
+      <script src="js/redirectPost.js"></script>
     </body>
 </html>

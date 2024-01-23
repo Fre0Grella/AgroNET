@@ -177,7 +177,7 @@ class DataBaseReader extends SimpleDB {
      */
     public function getPostInfo($post_id): array
     {
-        $stmt = $this->db->prepare("SELECT p.image_data, p.description, u.username, u.profile_image
+        $stmt = $this->db->prepare("SELECT p.image_data, p.description, u.username, u.profile_image, u.user_id
         FROM posts p JOIN users u ON p.user_id = u.user_id
         WHERE p.post_id = ?;");
 

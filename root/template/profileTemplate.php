@@ -33,17 +33,19 @@
                         <div class="col-8">
                             <div class="row text-start justify-content-beetween">
                                 <div class="col-12 "><h1><?php echo $templateParams["info"]["username"];?></h1></div>
-                                <div class="col-6 "><h2>follower</h2></div>
-                                <div class="col-6 "><h2>followed</h2></div>
+                                <div class="col-6 "><h2>follower: <?php /*echo $templateParams[""]; */?></h2></div>
+                                <div class="col-6 "><h2>followed: <?php /*echo $templateParams[""]; */?></h2></div>
                                 <div class="col-12">
                                     <p><?php echo $templateParams["info"]["bio"]; ?> </p>
                                 </div>
                             </div>
                             <div class="row justify-content-around text-center">
                                 <div class="col-10">
+                                <?php if($_SESSION["user_id"] != $user_id) : ?>
                                     <button class="btn btn-block fs-3 fw-medium">
                                         segui
                                     </button>
+                                    <?php endif ?>
                                 </div>
                             </div>
                         </div>
@@ -83,5 +85,6 @@
         crossorigin="anonymous">
       </script>
       <script src="js/slider.js"></script>
+      <script src="js/redirectPost.js"></script>
     </body>
 </html>
