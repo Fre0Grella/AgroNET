@@ -2,10 +2,7 @@
 
 require_once __DIR__ . "/../bootstrap.php";
 
-$bio = $_POST['description'];
-$username = $_POST['username'];
 $oldUsername = $_SESSION['username'];
-
 $userId = $_POST['user_id'];
 
 if ($_FILES['image']['size'] > 0) {
@@ -14,12 +11,21 @@ if ($_FILES['image']['size'] > 0) {
     $image = null;
 }
 
-if ($dbh->query("UPDATE users SET username = '$username' WHERE username = '$oldUsername'")) {
+if (isset($_POST['username'])) {
+    $username = $_POST['username'];
+    $dbh->query("UPDATE users SET username = '$username' WHERE username = '$oldUsername'");
     $_SESSION['username'] = $username;
 }
 
-$dbh->query("UPDATE users SET bio = '$bio' WHERE username = '$username'");
-$dbh->query("UPDATE users SET profile_image = '$image' WHERE username = '$username'");
+if (isset($_POST['description'])) {
+    $bio = $_POST['description'];
+    $dbh->query("UPDATE users SET bio = '$bio' WHERE user_id = '$userId'");
+
+}
+if ($image != null) {
+    $dbh->query("UPDATE users SET profile_image = '$image' WHERE user_id = '$userId'");
+}
+
 header("Location: ../profile.php");
 $dbh->close();
 
