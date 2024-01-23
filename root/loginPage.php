@@ -2,7 +2,7 @@
 require_once("bootstrap.php");
 
 
-$templateParams["title"] = "AgroNET - Home";
+$templateParams["title"] = "AgroNET - LoginPage";
 
 require("template/loginTemplate.php");
 
