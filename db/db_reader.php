@@ -251,11 +251,22 @@ class DataBaseReader extends SimpleDB {
      */
     public function isFollower($userId, $userId2): bool
     {
-        if(!($dbh->query("SELECT follower_id FROM followers 
-        WHERE followed_id = '$userId2' AND follower_id = '$userId'"))) {
-            return true;
+        if (!($dbh->query("SELECT follower_id FROM followers 
+            WHERE followed_id = '$userId2'
+            AND follower_id = '$userId'"))) {
+            return false;
         }
-        return false;
+        return true;
+    }
+
+    public function isLiked($userId,$post_id)
+    {
+        if (!($dbh->query("SELECT post_id FROM post_likes 
+            WHERE user_id = '$userId' 
+            AND post_id = '$post_id'"))){
+            return false;
+        }
+        return true;
     }
 }
 
