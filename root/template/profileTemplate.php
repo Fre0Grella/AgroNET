@@ -42,8 +42,8 @@
                             <div class="row justify-content-around text-center">
                                 <div class="col-10">
                                 <?php if($_SESSION["user_id"] != $user_id) : ?>
-                                    <button class="btn btn-block fs-3 fw-medium">
-                                        segui
+                                    <button type="button" class="btn btn-block fs-3 fw-medium" onclick="interact()" >
+                                        
                                     </button>
                                     <?php endif ?>
                                 </div>
@@ -86,5 +86,6 @@
       </script>
       <script src="js/slider.js"></script>
       <script src="js/redirectPost.js"></script>
+      <script src="js/followManager.js"></script>
     </body>
 </html>

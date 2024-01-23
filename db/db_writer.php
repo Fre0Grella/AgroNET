@@ -103,6 +103,14 @@ class DataBaseWriter extends DataBaseReader{
         $stmt->close();
     }
 
+    public function unfollow($followerId, $followedId): void
+    {
+        $stmt = $this->db->prepare("DELETE FROM followers WHERE follower_id = ? AND followed_id = ?");
+        $stmt->bind_param("ii",$followerId,$followedId);
+        $stmt->execute();
+        $stmt->close();
+    }
+
 
 
 
