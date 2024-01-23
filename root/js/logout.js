@@ -1,8 +1,7 @@
 function logout() {
     fetch('../logout.php')
         .then(response => response.text())
-        .then(data => {
+        .then(() => {
             window.location.assign("../root/index.html");
         });
 }
-
