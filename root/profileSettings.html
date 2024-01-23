@@ -16,7 +16,7 @@
     
 <div class="main-spacer">
 <main>
-  <form id="postForm" enctype="multipart/form-data">
+  <form id="postForm"  method="post" action="php/setProfile.php" enctype="multipart/form-data">
 
     <div class="form-group">
         <label for="username" class="form-label">Username</label>
@@ -37,7 +37,7 @@
       <img id="preview" src="" alt="Preview" class="img-fluid">
     </div>
     
-    <button type="button" class="btn btn-success btn-block p-3" onclick="createPost()">Modifica</button>
+    <button type="submit" class="btn btn-success btn-block p-3" >Modifica</button>
     <button type="button" class="btn btn-danger btn-block" onclick="logout()">Log out</button>
   </form>
 </main>
