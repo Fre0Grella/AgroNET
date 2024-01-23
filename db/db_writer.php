@@ -82,6 +82,29 @@ class DataBaseWriter extends DataBaseReader{
         $stmt->close();
     }
 
+    /**
+     * @param $followerId
+     * @param $followedId
+     * @return void
+     */
+    public function follow($followerId, $followedId): void
+    {
+        $stmt = $this->db->prepare("INSERT INTO followers (follower_id, followed_id) VALUES (?,?)");
+        $stmt->bind_param("ii",$followerId,$followedId);
+        $stmt->execute();
+        $stmt->close();
+
+        $result = $this->getUsernameFromId($followerId);
+        $followerName = $result['username'];
+        $text = "$followerName started to follow you";
+        $stmt = $this->db->prepare("INSERT INTO notifications (user_id, notification_text) VALUES (?,?)");
+        $stmt->bind_param("is",$followedId,$text);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+
+
 
 
 }
