@@ -230,6 +230,20 @@ class DataBaseReader extends SimpleDB {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /**
+     * @param $userId , id of the users that we want to know the number of followed
+     * @return array
+     */
+    public function getFollowed($userId): array
+    {
+        $stmt = $this->db->prepare("SELECT f.follower_id, count(*) as nFollowed
+        FROM followers f WHERE f.follower_id = ?");
+        $stmt->bind_param("i",$userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 
 
