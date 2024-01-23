@@ -220,7 +220,7 @@ class DataBaseReader extends SimpleDB {
      * @param $userId , id of the users that we want to know the number of followers
      * @return array
      */
-    public function getFollowers($userId): array
+    public function getFollowersNumbers($userId): array
     {
         $stmt = $this->db->prepare("SELECT f.followed_id, count(*) as nFollowers 
         FROM followers f WHERE f.followed_id = ?");
@@ -234,7 +234,7 @@ class DataBaseReader extends SimpleDB {
      * @param $userId , id of the users that we want to know the number of followed
      * @return array
      */
-    public function getFollowed($userId): array
+    public function getFollowedNumber($userId): array
     {
         $stmt = $this->db->prepare("SELECT f.follower_id, count(*) as nFollowed
         FROM followers f WHERE f.follower_id = ?");
@@ -244,6 +244,19 @@ class DataBaseReader extends SimpleDB {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /**
+     * @param $userId , users you want to know if follows
+     * @param $userId2 , users you want if is followed
+     * @return bool False if userId doesn't follow userId2, otherwise true
+     */
+    public function isFollower($userId, $userId2): bool
+    {
+        if(!($dbh->query("SELECT follower_id FROM followers 
+        WHERE followed_id = '$userId2' AND follower_id = '$userId'"))) {
+            return true;
+        }
+        return false;
+    }
 }
 
 
