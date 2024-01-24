@@ -43,5 +43,35 @@ class DatabaseHelper extends DataBaseWriter {
     }
 
 
+    /**
+     * @param $userId , users you want to know if follows
+     * @param $userId2 , users you want if is followed
+     * @return bool False if userId doesn't follow userId2, otherwise true
+     */
+    public function isFollower($userId, $userId2): bool
+    {
+        if (!($this->query("SELECT follower_id FROM followers 
+            WHERE followed_id = '$userId2'
+            AND follower_id = '$userId'"))) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * @param $userId , user who put like
+     * @param $post_id , post liked
+     * @return bool
+     */
+    public function isLiked($userId, $post_id): bool
+    {
+        if (!($this->query("SELECT post_id FROM post_likes 
+            WHERE user_id = '$userId' 
+            AND post_id = '$post_id'"))){
+            return false;
+        }
+        return true;
+    }
+
 }
 
