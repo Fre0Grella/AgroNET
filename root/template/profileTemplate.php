@@ -42,9 +42,17 @@
                             <div class="row justify-content-around text-center">
                                 <div class="col-10">
                                 <?php if($_SESSION["user_id"] != $user_id) : ?>
-                                <!-- <form method="get" action="followManager.php"> -->
-                                    <button type="submit" name = "button" id="<?php echo $user_id;?>" class="btn btn-block fs-3 fw-medium" onclick="change()" >FOLLOW</button>
-                                <!-- </form> -->
+                                <form method="get" action="php/followManager.php">
+                                    <div class="form-group">
+                                        <button name="button" value="<?php echo $user_id;?>" class="btn btn-block fs-3 fw-medium form-control" >
+                                        <?php/* if($templateParams["isFollow"] == true):*/ ?>
+                                            <!-- UNFOLLOW -->
+                                        <?php /*else :*/ ?>
+                                            FOLLOW
+                                        <?php /*endif;*/ ?>
+                                        </button>
+                                    </div>
+                                </form>
                                     <?php endif ?>
                                 </div>
                             </div>
@@ -86,6 +94,5 @@
       </script>
       <script src="js/slider.js"></script>
       <script src="js/redirectPost.js"></script>
-      <script src="js/followManager.js"></script>
     </body>
 </html>
