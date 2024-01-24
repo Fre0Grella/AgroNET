@@ -3,7 +3,7 @@
 require_once __DIR__ . "/../bootstrap.php";
 
 $oldUsername = $_SESSION['username'];
-$userId = $_POST['user_id'];
+$userId = $_SESSION['user_id'];
 
 if ($_FILES['image']['size'] > 0) {
     $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
