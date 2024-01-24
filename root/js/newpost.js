@@ -6,9 +6,11 @@ function changePostType() {
   if (category.getAttribute('value') == 'false') {
     img.setAttribute('src', greens);
     category.setAttribute('value', 'true');
+    category.textContent = "0";
   } else {
     img.setAttribute('src', tractor);
     category.setAttribute('value', 'false');
+    category.textContent = "1";
   }
 }
   

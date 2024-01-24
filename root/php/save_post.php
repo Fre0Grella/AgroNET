@@ -16,7 +16,7 @@ if ($_FILES['image']['size'] > 0) {
 $category = $_POST['category'];
 
 
-if ($category == 'true') {
+if ($category == 1) {
     $sql = "INSERT INTO posts (user_id, description, image_data) VALUES ('$userId', '$description', '$image')";
 } else {
     $sql = "INSERT INTO posts (user_id, description, category, image_data) VALUES ('$userId','$description', 0, '$image')";
