@@ -24,10 +24,10 @@
                 <div class="container-fluid ">
                     <div class="row text-center">
                         <div class="col-4">
-                            <img src="<?php if (!array_key_exists("user_profile",$templateParams["info"])) {
+                            <img src="<?php if (!array_key_exists("profile_image",$templateParams["info"])) {
                             echo 'img/defaultUserProfile.svg';
                         } else {
-                            echo 'data:image/jpeg;base64,' . base64_encode( $templateParams["info"]["user_profile"] ) .'"';
+                            echo 'data:image/jpeg;base64,' . base64_encode( $templateParams["info"]["profile_image"] ) .'"';
                         } ?>" class="img-fluid p-3" id="profilePic">
                         </div>
                         <div class="col-8">
