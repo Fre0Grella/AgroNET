@@ -24,7 +24,7 @@
                 <div class="container-fluid ">
                     <div class="row text-center">
                         <div class="col-4">
-                            <img src="<?php if (!array_key_exists("profile_image",$templateParams["info"])) {
+                            <img src="<?php if (!($templateParams["info"]["profile_image"])) {
                             echo 'img/defaultUserProfile.svg';
                         } else {
                             echo 'data:image/jpeg;base64,' . base64_encode( $templateParams["info"]["profile_image"] ) .'"';
@@ -45,11 +45,11 @@
                                 <form method="get" action="php/followManager.php">
                                     <div class="form-group">
                                         <button name="button" value="<?php echo $user_id;?>" class="btn btn-block fs-3 fw-medium form-control" >
-                                        <?php/* if($templateParams["isFollow"] == true):*/ ?>
-                                            <!-- UNFOLLOW -->
-                                        <?php /*else :*/ ?>
+                                        <?php if($templateParams["isFollow"]): ?>
+                                            UNFOLLOW
+                                        <?php else : ?>
                                             FOLLOW
-                                        <?php /*endif;*/ ?>
+                                        <?php endif; ?>
                                         </button>
                                     </div>
                                 </form>

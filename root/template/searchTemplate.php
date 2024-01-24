@@ -38,7 +38,7 @@
                         <header> <?php echo $postFeed["username"];?> </header>
                     </div>
                     <div class="col-2 p-0">
-                        <img src="<?php if (!array_key_exists("profile_image",$postFeed)) {
+                        <img src="<?php if (!($postFeed["profile_image"])) {
                             echo 'img/defaultUserProfile.svg';
                         } else {
                             echo 'data:image/jpeg;base64,' . base64_encode( $postFeed["profile_image"] ) .'"';

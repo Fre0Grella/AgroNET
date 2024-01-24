@@ -17,6 +17,6 @@ print_r($dbh->isFollower($follower, $followed));
 
 $dbh->close();
 
-// header("Location: ../profile.php?id=" . $followed);
+header("Location: ../profile.php?id=" . $followed);
 exit();
 ?>

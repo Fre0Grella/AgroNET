@@ -24,6 +24,7 @@ button:hover {
 
 #profilePic {
     max-height: 30vh;
+    border-radius: 50px;
 }
 
 @media only screen and (orientation: portrait) {

@@ -25,7 +25,7 @@
                             <h5 class="text-start"><?php echo $templateParams["postInfo"]["username"]; ?></h5>
                         </div>
                         <div class="col-2 p-0 mb-2">
-                            <img id="<?php echo $templateParams["postInfo"]["user_id"]?>" src="<?php if (!array_key_exists("profile_image",$templateParams["postInfo"])) {
+                            <img id="<?php echo $templateParams["postInfo"]["user_id"]?>" src="<?php if (!($templateParams["postInfo"]["profile_image"])) {
                             echo 'img/defaultUserProfile.svg';
                         } else {
                             echo 'data:image/jpeg;base64,' . base64_encode( $templateParams["postInfo"]["profile_image"] ) .'"';
@@ -57,7 +57,7 @@
                     <div class="col-12 border-bottom mb-2">
                         <div class="row">
                             <div class="col-2">
-                            <img id="<?php echo $comment["user_id"]?>" src="<?php if (!array_key_exists("profile_image",$comment)) {
+                            <img id="<?php echo $comment["user_id"]?>" src="<?php if (!($comment["profile_image"])) {
                             echo 'img/defaultUserProfile.svg';
                         } else {
                             echo 'data:image/jpeg;base64,' . base64_encode( $comment["profile_image"] ) .'"';
