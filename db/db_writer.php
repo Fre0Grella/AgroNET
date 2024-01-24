@@ -95,7 +95,7 @@ class DataBaseWriter extends DataBaseReader{
         $stmt->close();
 
         $result = $this->getUsernameFromId($followerId);
-        $followerName = $result['username'];
+        $followerName = $result[0]['username'];
         $text = "$followerName started to follow you";
         $stmt = $this->db->prepare("INSERT INTO notifications (user_id, notification_text) VALUES (?,?)");
         $stmt->bind_param("is",$followedId,$text);
