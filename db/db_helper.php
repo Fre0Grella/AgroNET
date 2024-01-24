@@ -50,9 +50,11 @@ class DatabaseHelper extends DataBaseWriter {
      */
     public function isFollower($userId, $userId2): bool
     {
-        if (!($this->query("SELECT follower_id FROM followers 
+        $result = $this->query("SELECT follower_id FROM followers 
             WHERE followed_id = '$userId2'
-            AND follower_id = '$userId'"))) {
+            AND follower_id = '$userId'");
+        $follower_id = $result->fetch_all(MYSQLI_ASSOC);
+        if (empty($follower_id)) {
             return false;
         }
         return true;
@@ -65,9 +67,11 @@ class DatabaseHelper extends DataBaseWriter {
      */
     public function isLiked($userId, $post_id): bool
     {
-        if (!($this->query("SELECT post_id FROM post_likes 
+        $result = $this->query("SELECT post_id FROM post_likes 
             WHERE user_id = '$userId' 
-            AND post_id = '$post_id'"))){
+            AND post_id = '$post_id'");
+        $like = $result->fetch_all(MYSQLI_ASSOC);
+        if (empty($like)){
             return false;
         }
         return true;
