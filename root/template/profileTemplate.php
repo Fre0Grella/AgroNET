@@ -63,15 +63,15 @@
 
             <?php foreach($templateParams["allPost"] as $postFeed): ?>
             <?php /*print_r($templateParams["like"]);*/ ?>
-            <article id="<?php echo $postFeed["post_id"];?>">
+            <article id="<?php echo $postFeed["post_id"];?>" class="<?php echo $postFeed["category"]?>">
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode( $postFeed["image_data"] ) .'"';?>" class="img-fluid">
                     </div>
-                    <div class="col-9 p-1">
+                    <div class="col-9 p-1 mt-2">
                         <h5 class="text-end "><?php ?></h5>
                     </div>
-                    <div class="col-2 p-0">
+                    <div class="col-2 p-0 mt-1">
                         <img src="img/icon/hearth.svg" class="img-fluid">
                     </div>
                     
