@@ -25,10 +25,10 @@
                             <h5 class="text-start"><?php echo $templateParams["postInfo"]["username"]; ?></h5>
                         </div>
                         <div class="col-2 p-0 mb-2">
-                            <img id="<?php echo $templateParams["postInfo"]["user_id"]?>" src="<?php if (!array_key_exists("user_profile",$templateParams["postInfo"])) {
+                            <img id="<?php echo $templateParams["postInfo"]["user_id"]?>" src="<?php if (!array_key_exists("profile_image",$templateParams["postInfo"])) {
                             echo 'img/defaultUserProfile.svg';
                         } else {
-                            echo 'data:image/jpeg;base64,' . base64_encode( $templateParams["postInfo"]["user_profile"] ) .'"';
+                            echo 'data:image/jpeg;base64,' . base64_encode( $templateParams["postInfo"]["profile_image"] ) .'"';
                         } ?>" class="img-fluid profileImg"  >
                         </div>
                         <div class="col-12">
@@ -57,10 +57,10 @@
                     <div class="col-12 border-bottom mb-2">
                         <div class="row">
                             <div class="col-2">
-                            <img id="<?php echo $comment["user_id"]?>" src="<?php if (!array_key_exists("user_profile",$comment)) {
+                            <img id="<?php echo $comment["user_id"]?>" src="<?php if (!array_key_exists("profile_image",$comment)) {
                             echo 'img/defaultUserProfile.svg';
                         } else {
-                            echo 'data:image/jpeg;base64,' . base64_encode( $comment["user_profile"] ) .'"';
+                            echo 'data:image/jpeg;base64,' . base64_encode( $comment["profile_image"] ) .'"';
                         } ?>" class="img-fluid profileImg">
                             </div>
                             <div class="col-10">
