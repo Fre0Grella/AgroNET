@@ -13,11 +13,7 @@
     <script src="js/searchBar.js"></script>
     </head>
     <body>
-        <nav class="topBar">
-            <img src="img/icon/greens.svg" draggable="false" class="img-fluid">
-            <input class="slider" type="range" min="1" max="3" value="2" id="myRange" >
-            <img src="img/icon/tractor.svg" draggable="false" class="img-fluid">    
-        </nav>
+        <?php require("sliderBar.php"); ?>
         <div class="main-spacer">
         <main>
             <div class="searchBar border-bottom">
@@ -53,7 +49,7 @@
                                         </button>
                                     </div>
                                 </form>
-                                    <?php endif ?>
+                                <?php endif ?>
                                 </div>
                             </div>
                         </div>
@@ -81,13 +77,7 @@
         </main>
         <div class="spacer"></div>
     </div>
-        <nav id="botBar">
-            <a href="home.php"><img src="img/icon/home.svg" draggable="false" class="img-fluid p-2 change"></a>
-            <a href="search.php"><img src="img/icon/search.svg" draggable="false" class="img-fluid p-2 change"></a>
-            <a href="newpost.html"><img src="img/icon/addPhoto.svg" draggable="false" class="img-fluid p-2 change"></a>
-            <a href="profileSettings.html"><img src="img/icon/settings.svg" draggable="false" class="img-fluid p-2 change"></a>
-            <a href="profile.php"><img src="img/icon/profile.svg" draggable="false" class="img-fluid p-2 change"></a>
-        </nav>
+        <?php require("mainBar.php"); ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous">
