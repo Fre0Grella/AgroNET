@@ -12,6 +12,6 @@ if ($dbh->isLiked($user_id, $post_id)) {
 
 $dbh->close();
 
-header("Location: ../profileView.php?id=" . $post_id);
+header("Location: ../postView.php?id=" . $post_id);
 exit();
 ?>
