@@ -89,9 +89,11 @@ class DataBaseReader extends SimpleDB {
      */
     public function getPostsFromId($user_id): array
     {
-        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at
+        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at, count(l.like_id) as nLike
         FROM posts p
+        LEFT JOIN post_likes l ON p.post_id = l.post_id
         WHERE p.user_id = ?
+        GROUP BY p.post_id
         LIMIT 50;
         ");
         $stmt->bind_param("i", $user_id);
@@ -177,8 +179,9 @@ class DataBaseReader extends SimpleDB {
      */
     public function getPostInfo($post_id): array
     {
-        $stmt = $this->db->prepare("SELECT p.image_data, p.description, u.username, u.profile_image, u.user_id
-        FROM posts p JOIN users u ON p.user_id = u.user_id
+        $stmt = $this->db->prepare("SELECT p.image_data, p.description, u.username, u.profile_image, u.user_id, count(l.like_id) as nLike
+        FROM posts p LEFT JOIN post_likes l ON p.post_id = l.post_id
+        JOIN users u ON p.user_id = u.user_id
         WHERE p.post_id = ?;");
 
         $stmt->bind_param("i", $post_id);
@@ -203,11 +206,11 @@ class DataBaseReader extends SimpleDB {
 
     public function getNumberOfLikesFromUser($user_id): array
     {
-        $stmt = $this->db->prepare("SELECT l.post_id, count(*) as nLike
-        FROM post_likes l
-        RIGHT JOIN posts p ON l.post_id = p.post_id
+        $stmt = $this->db->prepare("SELECT p.post_id, count(l.like_id) as nLike
+        FROM posts p
+        LEFT JOIN post_likes l ON p.post_id = l.post_id
         WHERE p.user_id = ?
-        GROUP BY l.post_id;");
+        GROUP BY p.post_id;");
 
         $stmt->bind_param("i", $user_id);
         $stmt->execute();

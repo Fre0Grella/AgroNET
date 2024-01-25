@@ -12,8 +12,9 @@ $templateParams["title"] = "AgroNET - Profile";
 $temp = $dbh->getProfileInfo($user_id);
 $templateParams["info"] = $temp[0];
 $templateParams["allPost"] = $dbh->getPostsFromId($user_id);
-$templateParams["like"] = $dbh->getNumberOfLikesFromUser($user_id);
-
+// $temp = $dbh->getNumberOfLikesFromUser($user_id);
+// $templateParams["like"] = $temp[0];
+// print_r($templateParams["allPost"]);
 
 
 require("template/profileTemplate.php");

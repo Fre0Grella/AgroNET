@@ -36,7 +36,7 @@
                         </div>
                         
                         <div class="col-9 p-1">
-                            <h5 class="text-end "><?php echo $templateParams["likeNumber"]; ?></h5>
+                            <h5 class="text-end "><?php echo $templateParams["postInfo"]["nLike"]; ?></h5>
                         </div>
                         <div class="col-2 p-0">
                             <img src="img/icon/hearth.svg" class="img-fluid">
