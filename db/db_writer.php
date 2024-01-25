@@ -67,6 +67,14 @@ class DataBaseWriter extends DataBaseReader{
         $stmt->bind_Param("ii", $user_id, $post_id);
         $stmt->execute();
         $stmt->close();
+
+        $result = $this->getPostInfo($post_id);
+        $receiver = $result['user_id'];
+        $sender = $this->getUsernameFromId($user_id)['username'];
+        $notification = $sender . "liked your post!";
+        $this->query("INSERT INTO notifications (user_id, notification_text) VALUES ('$receiver','$notification') ");
+
+
     }
 
     /**
