@@ -23,8 +23,8 @@
                 placeholder="  What you're searching for. . ."/>
             </div>
             <?php 
-             include("postFeed.php");?>
-            <?php echo showPosts($templateParams["allPosts"]); ?>
+             include("postFeed.php");
+            showPost($templateParams["allPost"]); ?>
 
         </main>
         <div class="spacer"></div>
