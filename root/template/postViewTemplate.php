@@ -39,7 +39,18 @@
                             <h5 class="text-end "><?php echo $templateParams["postInfo"]["nLike"]; ?></h5>
                         </div>
                         <div class="col-2 p-0">
-                            <img src="img/icon/hearth.svg" class="img-fluid">
+                            <form method="get" action="php/likeManager.php">
+                                <div class="form-group">
+                                    <button name="like" value="<?php echo $_GET["id"];?>" class="form-group">
+                                    <?php if($templateParams["isLiked"]): ?>
+                                        <img src="img/icon/hearthLiked.svg" class="img-fluid">
+                                    <?php else: ?>
+                                        <img src="img/icon/hearth.svg" class="img-fluid">
+                                    <?php endif; ?>
+                                    </button>
+                                </div>
+                            </form>
+                            
                         </div>
                         <div class="col-12 text-left">
                             <p><?php echo $templateParams["postInfo"]["description"]; ?></p>

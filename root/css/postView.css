@@ -16,6 +16,11 @@ article {
     top: 0;
 }
 
+form button {
+    border: none;
+    background-color: white;
+}
+
 @media only screen and (orientation: portrait) {
     main {
         margin-left: 10px;

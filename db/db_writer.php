@@ -118,11 +118,4 @@ class DataBaseWriter extends DataBaseReader{
         $stmt->execute();
         $stmt->close();
     }
-
-
-
-
-
 }
-
-
