@@ -29,8 +29,8 @@
                         <div class="col-8">
                             <div class="row text-start justify-content-beetween">
                                 <div class="col-12 "><h1><?php echo $templateParams["info"]["username"];?></h1></div>
-                                <div class="col-6 "><h2>follower: <?php /*echo $templateParams[""]; */?></h2></div>
-                                <div class="col-6 "><h2>followed: <?php /*echo $templateParams[""]; */?></h2></div>
+                                <div class="col-6 "><h2>follower: <?php echo $templateParams["follower"]["nFollowers"]; ?></h2></div>
+                                <div class="col-6 "><h2>followed: <?php echo $templateParams["followed"]["nFollowed"]; ?></h2></div>
                                 <div class="col-12">
                                     <p><?php echo $templateParams["info"]["bio"]; ?> </p>
                                 </div>

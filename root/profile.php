@@ -12,9 +12,11 @@ $templateParams["title"] = "AgroNET - Profile";
 $temp = $dbh->getProfileInfo($user_id);
 $templateParams["info"] = $temp[0];
 $templateParams["allPost"] = $dbh->getPostsFromId($user_id);
-// $temp = $dbh->getNumberOfLikesFromUser($user_id);
-// $templateParams["like"] = $temp[0];
-// print_r($templateParams["allPost"]);
+$temp = $dbh->getFollowersNumbers($user_id);
+$templateParams["follower"] = $temp[0];
+$temp = $dbh->getFollowedNumber($user_id);
+$templateParams["followed"] = $temp[0];
+print_r($templateParams["follower"]);
 
 
 require("template/profileTemplate.php");

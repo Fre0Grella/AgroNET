@@ -15,7 +15,6 @@ $templateParams["postInfo"] = $temp[0];
 $templateParams["comment"] = $dbh->getCommentsFromPostId($post_id);
 $templateParams["isLiked"] = $dbh->isLiked($user_id, $post_id);
 
-
 require("template/postViewTemplate.php");
 
 ?>
