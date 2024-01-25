@@ -44,11 +44,11 @@ class DataBaseWriter extends DataBaseReader{
         $stmt->close();
 
         $result = $this->getUsernameFromId($user_id);
-        $sender = $result['username'];
+        $sender = $result[0]['username'];
 
         $receiver = str_replace($sender,"",$chat_id);
         $result = $this->getIdFromUsername($receiver);
-        $receiverID = $result['user_id'];
+        $receiverID = $result[0]['user_id'];
         $text = "New message from $sender";
         $stmt = $this->db->prepare("INSERT INTO notifications (user_id, notification_text) VALUES (?,?)");
         $stmt->bind_param("is",$receiverID,$text);
@@ -67,6 +67,14 @@ class DataBaseWriter extends DataBaseReader{
         $stmt->bind_Param("ii", $user_id, $post_id);
         $stmt->execute();
         $stmt->close();
+
+        $result = $this->getPostInfo($post_id);
+        $receiver = $result[0]['user_id'];
+        $sender = $this->getUsernameFromId($user_id)[0]['username'];
+        $notification = $sender . "liked your post!";
+        $this->query("INSERT INTO notifications (user_id, notification_text) VALUES ('$receiver','$notification') ");
+
+
     }
 
     /**

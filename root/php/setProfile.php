@@ -11,7 +11,7 @@ if ($_FILES['image']['size'] > 0) {
     $image = null;
 }
 
-if (count($_POST['username'])>2) {
+if (!(empty($_POST['username']))) {
     $username = $_POST['username'];
     $dbh->query("UPDATE users SET username = '$username' WHERE user_id = '$userId'");
     $_SESSION['username'] = $username;
