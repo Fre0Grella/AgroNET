@@ -110,7 +110,7 @@ class DataBaseWriter extends DataBaseReader{
         $result = $this->query("SELECT profile_image FROM users WHERE user_id = '$followerId'")->fetch_all(MYSQLI_ASSOC);
         $pic = $result['profile_image'];
         $stmt = $this->db->prepare("INSERT INTO notifications (user_id, notification_text,profile_image) VALUES (?,?,?)");
-        $stmt->bind_param("is",$followedId,$text,$pic);
+        $stmt->bind_param("isb",$followedId,$text,$pic);
         $stmt->execute();
         $stmt->close();
     }
