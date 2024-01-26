@@ -71,7 +71,7 @@ class DataBaseWriter extends DataBaseReader{
         $result = $this->getPostInfo($post_id);
         $receiver = $result[0]['user_id'];
         $sender = $this->getUsernameFromId($user_id)[0]['username'];
-        $pic = $this->query("SELECT profile_image FROM users WHERE user_id = '$user_id'")[]['profile_image'];
+        $pic = $this->query("SELECT profile_image FROM users WHERE user_id = '$user_id'")[0]['profile_image'];
         $notification = $sender . " liked your post!";
         $this->query("INSERT INTO notifications (user_id, notification_text,profile_image) VALUES ('$receiver','$notification','$pic') ");
 
