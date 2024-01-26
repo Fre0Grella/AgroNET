@@ -16,6 +16,12 @@ button:hover {
     width: 90%;
 }
 
+.badge {
+    border-radius: 50%;
+    background: red;
+    color: white;
+}
+
 .searchBar {
     position: fixed;
     top: 0px;

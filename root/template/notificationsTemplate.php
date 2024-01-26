@@ -18,9 +18,13 @@
             <article>
                 <div class="row">
                     <div class="col-1">
-                        <img src="img/ProfilePic.jpeg" class="img-fluid"/>
+                        <img src="<?php if (!($notification["profile_image"])) {
+                            echo 'img/defaultUserProfile.svg';
+                        } else {
+                            echo 'data:image/jpeg;base64,' . base64_encode( $notification["profile_image"] ) .'"';
+                        } ?>" class="img-fluid profileInfo"/>
                     </div>
-                    <div class="col-8 border-bottom">
+                    <div class="col-10 border-bottom">
                         <div class="col-12 ">
                             <p><?php echo $notification["notification_text"] ?></p>
                         </div>
@@ -34,5 +38,6 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="js/redirectProfile.js"></script>
     </body>
 </html>

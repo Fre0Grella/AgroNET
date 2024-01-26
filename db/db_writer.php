@@ -71,10 +71,8 @@ class DataBaseWriter extends DataBaseReader{
         $result = $this->getPostInfo($post_id);
         $receiver = $result[0]['user_id'];
         $sender = $this->getUsernameFromId($user_id)[0]['username'];
-        $result = $this->query("SELECT profile_image FROM users WHERE user_id = '$user_id'")->fetch_all(MYSQLI_ASSOC);
-        $pic = $result['profile_image'];
         $notification = $sender . " liked your post!";
-        $this->query("INSERT INTO notifications (user_id, notification_text, profile_image) VALUES ('$receiver','$notification','$pic')");
+        $this->query("INSERT INTO notifications (user_id, notification_text, profile_image) VALUES ('$receiver', '$notification', (SELECT profile_image FROM users WHERE user_id = '$user_id'))");
 
 
     }
@@ -107,10 +105,8 @@ class DataBaseWriter extends DataBaseReader{
         $result = $this->getUsernameFromId($followerId);
         $followerName = $result[0]['username'];
         $text = "$followerName started to follow you";
-        $result = $this->query("SELECT profile_image FROM users WHERE user_id = '$followerId'")->fetch_all(MYSQLI_ASSOC);
-        $pic = $result['profile_image'];
-        $stmt = $this->db->prepare("INSERT INTO notifications (user_id, notification_text,profile_image) VALUES (?,?,?)");
-        $stmt->bind_param("isb",$followedId,$text,$pic);
+        $stmt = $this->db->prepare("INSERT INTO notifications (user_id, notification_text,profile_image) VALUES (?,?,(SELECT profile_image FROM users WHERE user_id = '$followerId'))");
+        $stmt->bind_param("is",$followedId,$text);
         $stmt->execute();
         $stmt->close();
     }
@@ -139,10 +135,8 @@ class DataBaseWriter extends DataBaseReader{
         $sender = $this->getUsernameFromId($userId)[0]['username'];
         $receiver = $this->query("SELECT user_id FROM posts
                                       WHERE post_id = '$postId'")[0]['user_id'];
-        $result = $this->query("SELECT profile_image FROM users WHERE user_id = '$userId'")->fetch_all(MYSQLI_ASSOC);
-        $pic = $result['profile_image'];
         $notifications = "$sender comments your post";
-        $this->query("INSERT INTO notifications (user_id, notification_text,profile_image) VALUES ('$receiver','$notifications','$pic')");
+        $this->query("INSERT INTO notifications (user_id, notification_text,profile_image) VALUES ('$receiver','$notifications',(SELECT profile_image FROM users WHERE user_id = '$userId'))");
 
 
     }
