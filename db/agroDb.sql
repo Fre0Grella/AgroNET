@@ -69,6 +69,7 @@ CREATE TABLE followers (
 
 CREATE TABLE notifications (
     user_id INT,
+    profile_image LONGBLOB,
     notification_text TEXT NOT NULL,
     is_read BOOLEAN NOT NULL DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
