@@ -9,7 +9,7 @@ class DataBaseReader extends SimpleDB {
      */
     public function getNotifications($user_id): array
     {
-        $stmt = $this->db->prepare("SELECT notification_text, profile_image
+        $stmt = $this->db->prepare("SELECT notification_text, profile_image, sender
         FROM notifications
         WHERE user_id = ?
         ORDER BY created_at DESC;

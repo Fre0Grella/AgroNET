@@ -72,7 +72,7 @@ class DataBaseWriter extends DataBaseReader{
         $receiver = $result[0]['user_id'];
         $sender = $this->getUsernameFromId($user_id)[0]['username'];
         $notification = $sender . " liked your post!";
-        $this->query("INSERT INTO notifications (user_id, notification_text, profile_image) VALUES ('$receiver', '$notification', (SELECT profile_image FROM users WHERE user_id = '$user_id'))");
+        $this->query("INSERT INTO notifications (user_id, notification_text, profile_image, sender) VALUES ('$receiver', '$notification', (SELECT profile_image FROM users WHERE user_id = '$user_id'), $user_id)");
 
 
     }
@@ -105,7 +105,7 @@ class DataBaseWriter extends DataBaseReader{
         $result = $this->getUsernameFromId($followerId);
         $followerName = $result[0]['username'];
         $text = "$followerName started to follow you";
-        $stmt = $this->db->prepare("INSERT INTO notifications (user_id, notification_text,profile_image) VALUES (?,?,(SELECT profile_image FROM users WHERE user_id = '$followerId'))");
+        $stmt = $this->db->prepare("INSERT INTO notifications (user_id, notification_text,profile_image,sender) VALUES (?,?,(SELECT profile_image FROM users WHERE user_id = '$followerId'),$user_id)");
         $stmt->bind_param("is",$followedId,$text);
         $stmt->execute();
         $stmt->close();
@@ -136,7 +136,7 @@ class DataBaseWriter extends DataBaseReader{
         $receiver = $this->query("SELECT user_id FROM posts
                                       WHERE post_id = '$postId'")[0]['user_id'];
         $notifications = "$sender comments your post";
-        $this->query("INSERT INTO notifications (user_id, notification_text,profile_image) VALUES ('$receiver','$notifications',(SELECT profile_image FROM users WHERE user_id = '$userId'))");
+        $this->query("INSERT INTO notifications (user_id, notification_text,profile_image,sender) VALUES ('$receiver','$notifications',(SELECT profile_image FROM users WHERE user_id = '$userId'),$user_id)");
 
 
     }

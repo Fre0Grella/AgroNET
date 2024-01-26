@@ -15,14 +15,14 @@
         <div class="main-spacer">
         <main>
         <?php foreach($templateParams["notifications"] as $notification): ?>
-            <article>
+            <article id="<?php echo $notification["sender"];?>" class="profileInfo">
                 <div class="row">
                     <div class="col-1">
                         <img src="<?php if (!($notification["profile_image"])) {
                             echo 'img/defaultUserProfile.svg';
                         } else {
                             echo 'data:image/jpeg;base64,' . base64_encode( $notification["profile_image"] ) .'"';
-                        } ?>" class="img-fluid profileInfo"/>
+                        } ?>" class="img-fluid"/>
                     </div>
                     <div class="col-10 border-bottom">
                         <div class="col-12 ">

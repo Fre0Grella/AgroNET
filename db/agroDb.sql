@@ -73,7 +73,8 @@ CREATE TABLE notifications (
     notification_text TEXT NOT NULL,
     is_read BOOLEAN NOT NULL DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(user_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (sender) REFERENCES users(user_id)
 );
 
 CREATE TABLE post_likes (
