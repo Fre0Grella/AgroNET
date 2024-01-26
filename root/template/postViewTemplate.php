@@ -22,21 +22,21 @@
                 <article>
                     <div class="row justify-content-center">
                         <div id="<?php echo $templateParams["postInfo"]["user_id"]?>" class="col-9 p-1 mb-2 profileInfo">
-                            <h5 class="text-start"><?php echo $templateParams["postInfo"]["username"]; ?></h5>
+                            <h4 class="text-start text-truncate text-wrap"><?php echo $templateParams["postInfo"]["username"]; ?></h4>
                         </div>
                         <div class="col-2 p-0 mb-2">
                             <img id="<?php echo $templateParams["postInfo"]["user_id"]?>" src="<?php if (!($templateParams["postInfo"]["profile_image"])) {
                             echo 'img/defaultUserProfile.svg';
                         } else {
                             echo 'data:image/jpeg;base64,' . base64_encode( $templateParams["postInfo"]["profile_image"] ) .'"';
-                        } ?>" class="img-fluid profileInfo"  >
+                        } ?>" class="img-fluid profileInfo">
                         </div>
                         <div class="col-12">
                             <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode( $templateParams["postInfo"]["image_data"] ) .'"';?>" class="img-fluid">
                         </div>
                         
                         <div class="col-9 p-1">
-                            <h5 class="text-end "><?php echo $templateParams["postInfo"]["nLike"]; ?></h5>
+                            <h4 class="text-end mt-3"><?php echo $templateParams["postInfo"]["nLike"]; ?></h5>
                         </div>
                         <div class="col-2 p-0">
                             <form method="get" action="php/likeManager.php">
@@ -53,10 +53,12 @@
                             
                         </div>
                         <div class="col-12 text-left">
-                            <p><?php echo $templateParams["postInfo"]["description"]; ?></p>
+                            <p class = "text-truncate text-wrap"><?php echo $templateParams["postInfo"]["description"]; ?></p>
                         </div>
                         <div class="col-12">
+                            <form method="post" action = "/php/commentManager.php">
                             <input type="text" id="form1" class="form-control form-control-lg focus-ring focus-ring-dark" placeholder="  Type for comment. . ."/>
+                            </form>
                         </div>
                     </div>
                 </article>

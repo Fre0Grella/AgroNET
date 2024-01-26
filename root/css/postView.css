@@ -22,8 +22,12 @@ form button {
 }
 
 @media only screen and (orientation: portrait) {
+
     main {
         margin-left: 10px;
+    }
+    p {
+        font-size: 100% !important;
     }
     .postCol {
         width: 100% !important;

@@ -28,11 +28,11 @@
                         </div>
                         <div class="col-8">
                             <div class="row text-start justify-content-beetween">
-                                <div class="col-12"><h1><?php echo $templateParams["info"]["username"];?></h1></div>
-                                <div class="col-6 "><h2>follower: <?php echo $templateParams["follower"]["nFollowers"]; ?></h2></div>
-                                <div class="col-6 "><h2>followed: <?php echo $templateParams["followed"]["nFollowed"]; ?></h2></div>
+                                <div class="col-12"><h1 class="text-truncate"><?php echo $templateParams["info"]["username"];?></h1></div>
+                                <div class="col-6 "><h2 class="text-truncate">follower: <?php echo $templateParams["follower"]["nFollowers"]; ?></h2></div>
+                                <div class="col-6 "><h2 class="text-truncate">followed: <?php echo $templateParams["followed"]["nFollowed"]; ?></h2></div>
                                 <div class="col-12">
-                                    <p><?php echo $templateParams["info"]["bio"]; ?> </p>
+                                    <p class="text-truncate text-wrap"><?php echo $templateParams["info"]["bio"]; ?> </p>
                                 </div>
                             </div>
                             <div class="row justify-content-around text-center">
@@ -42,16 +42,16 @@
                                         <div class="form-group">
                                             <button name="button" value="<?php echo $user_id;?>" class="btn btn-block fs-3 fw-medium form-control" >
                                             <?php if($templateParams["isFollow"]): ?>
-                                                UNFOLLOW
+                                                <p>UNFOLLOW</p>
                                             <?php else : ?>
-                                                FOLLOW
+                                                <p>FOLLOW</p>
                                             <?php endif; ?>
                                             </button>
                                         </div>
                                     </form>
                                     <?php else : ?>
                                     <a id="notificationbtn" href="notifications.php" role="button" class="btn btn-block fs-3 fw-medium form-control">
-                                        NOTIFICHE
+                                        <p>NOTIFICHE</p>
                                     </a>
                                     <?php endif; ?>
                                 </div>
