@@ -7,7 +7,7 @@
                      <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode( $postFeed["image_data"] ) .'"';?>" class="img-fluid">
                  </div>
                  <div class="col-8 mt-2">
-                     <header> <?php echo $postFeed["username"];?> </header>
+                     <header class="text-truncate"> <?php echo $postFeed["username"];?> </header>
                  </div>
                  <div class="col-2 p-0 mt-1">
                      <img src="<?php if (!($postFeed["profile_image"])) {

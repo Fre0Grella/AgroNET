@@ -204,5 +204,3 @@ class DataBaseReader extends SimpleDB {
 
 
 }
-
-

@@ -21,7 +21,7 @@
             <div class="postCol border-bottom ">
                 <article>
                     <div class="row justify-content-center">
-                        <div class="col-9 p-1 mb-2">
+                        <div id="<?php echo $templateParams["postInfo"]["user_id"]?>" class="col-9 p-1 mb-2 profileInfo">
                             <h5 class="text-start"><?php echo $templateParams["postInfo"]["username"]; ?></h5>
                         </div>
                         <div class="col-2 p-0 mb-2">
@@ -29,7 +29,7 @@
                             echo 'img/defaultUserProfile.svg';
                         } else {
                             echo 'data:image/jpeg;base64,' . base64_encode( $templateParams["postInfo"]["profile_image"] ) .'"';
-                        } ?>" class="img-fluid profileImg"  >
+                        } ?>" class="img-fluid profileInfo"  >
                         </div>
                         <div class="col-12">
                             <img src="<?php echo 'data:image/jpeg;base64,' . base64_encode( $templateParams["postInfo"]["image_data"] ) .'"';?>" class="img-fluid">

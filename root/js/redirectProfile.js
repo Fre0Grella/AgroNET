@@ -1,4 +1,4 @@
-let profiles = document.getElementsByClassName("profileImg");
+let profiles = document.getElementsByClassName("profileInfo");
 
 for (i = 0; i < profiles.length; i++) {
     const id = profiles[i].id;
