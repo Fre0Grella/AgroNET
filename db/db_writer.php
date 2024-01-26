@@ -136,7 +136,7 @@ class DataBaseWriter extends DataBaseReader{
 
         $sender = $this->getUsernameFromId($userId)[0]['username'];
         $receiver = $this->query("SELECT user_id FROM posts
-                                      WHERE p.post_id = '$postId'")[0]['username'];
+                                      WHERE post_id = '$postId'")[0]['username'];
         $pic = $this->query("SELECT profile_image FROM users WHERE user_id = '$userId'")[0]['profile_image'];
         $notifications = "$sender comments your post";
         $this->query("INSERT INTO notifications (user_id, notification_text,profile_image) VALUES ('$receiver','$notifications','$pic')");
