@@ -49,7 +49,10 @@
                                         </button>
                                     </div>
                                 </form>
-                                <?php endif ?>
+                                <?php else : ?>
+                                <button name="button" class="btn btn-block fs-3 fw-medium form-control">
+                                    NOTIFICHE
+                                <?php endif; ?>
                                 </div>
                             </div>
                         </div>
