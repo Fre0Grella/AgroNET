@@ -118,4 +118,26 @@ class DataBaseWriter extends DataBaseReader{
         $stmt->execute();
         $stmt->close();
     }
+
+    /**
+     * @param $postId ,id of the liked post
+     * @param $userId , id of the user who liked the post
+     * @param $text  , text of the comment
+     * @return void
+     */
+    public function newComment($postId, $userId, $text): void
+    {
+        $stmt = $this->db->prepare("INSERT INTO comments (post_id, user_id, comment_text) VALUES (?,?,?)");
+        $stmt->bind_param("iis",$postId,$userId,$text);
+        $stmt->execute();
+        $stmt->close();
+
+        $sender = $this->getUsernameFromId($userId)[0]['username'];
+        $receiver = $this->query("SELECT user_id FROM posts
+                                      WHERE p.post_id = '$postId'")[0]['username'];
+        $notifications = "$sender comments your post";
+        $this->query("INSERT INTO notifications (user_id, notification_text) VALUES ($receiver,$notifications)");
+
+
+    }
 }
