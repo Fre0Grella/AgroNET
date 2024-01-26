@@ -105,8 +105,9 @@ class DataBaseWriter extends DataBaseReader{
         $result = $this->getUsernameFromId($followerId);
         $followerName = $result[0]['username'];
         $text = "$followerName started to follow you";
-        $stmt = $this->db->prepare("INSERT INTO notifications (user_id, notification_text) VALUES (?,?)");
-        $stmt->bind_param("is",$followedId,$text);
+        $pic = $this->query("SELECT profile_image FROM users WHERE user_id = '$followerId'");
+        $stmt = $this->db->prepare("INSERT INTO notifications (user_id, notification_text,profile_image) VALUES (?,?,?)");
+        $stmt->bind_param("is",$followedId,$text,$pic);
         $stmt->execute();
         $stmt->close();
     }
