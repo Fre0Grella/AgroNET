@@ -26,6 +26,9 @@ form button {
     main {
         margin-left: 10px;
     }
+    h2 {
+        font-size: 150% !important;
+    }
     p {
         font-size: 100% !important;
     }

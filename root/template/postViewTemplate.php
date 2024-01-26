@@ -22,7 +22,7 @@
                 <article>
                     <div class="row justify-content-center">
                         <div id="<?php echo $templateParams["postInfo"]["user_id"]?>" class="col-9 p-1 mb-2 profileInfo">
-                            <h4 class="text-start text-truncate text-wrap"><?php echo $templateParams["postInfo"]["username"]; ?></h4>
+                            <h2 class="text-start text-truncate text-wrap"><?php echo $templateParams["postInfo"]["username"]; ?></h2>
                         </div>
                         <div class="col-2 p-0 mb-2">
                             <img id="<?php echo $templateParams["postInfo"]["user_id"]?>" src="<?php if (!($templateParams["postInfo"]["profile_image"])) {
@@ -56,8 +56,8 @@
                             <p class = "text-truncate text-wrap"><?php echo $templateParams["postInfo"]["description"]; ?></p>
                         </div>
                         <div class="col-12">
-                            <form method="post" action = "/php/commentManager.php">
-                            <input type="text" id="form1" class="form-control form-control-lg focus-ring focus-ring-dark" placeholder="  Type for comment. . ."/>
+                            <form method="post" action = "php/save_comment.php?id=<?php echo $_GET["id"]; ?>">
+                            <input type="text" name="comment" class="form-control form-control-lg focus-ring focus-ring-dark" placeholder="  Type for comment. . ."/>
                             </form>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                             </div>
                             <div class="col-10">
                                 <div class="col-12">
-                                    <h2><?php echo $comment["username"];?></h2>
+                                    <h4><?php echo $comment["username"];?></h4>
                                 </div>
                                 <div class="col-12">
                                     <p><?php echo $comment["comment_text"];?></p>

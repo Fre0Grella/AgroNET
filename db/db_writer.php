@@ -31,29 +31,25 @@ class DataBaseWriter extends DataBaseReader{
     }
 
     /**
-     * @param $chat_id , id of the chat
-     * @param $user_id , sender of the message
-     * @param $message , string to save in message_text
+     * @param $post_id , id of the post
+     * @param $user_id , sender of the comment
+     * @param $comment , string to save in comment
      * @return void
      */
-    public function createMessage($chat_id, $user_id, $message): void
+    public function createComment($post_id, $user_id, $comment): void
     {
-        $stmt = $this->db->prepare("INSERT INTO messages (chat_id, user_id, message_text) VALUES (?, ?, ?);");
-        $stmt->bind_Param("sis", $chat_id, $user_id, $message);
+        $stmt = $this->db->prepare("INSERT INTO comments (post_id, user_id, comment_text) VALUES (?, ?, ?);");
+        $stmt->bind_Param("sis", $post_id, $user_id, $comment);
         $stmt->execute();
         $stmt->close();
 
-        $result = $this->getUsernameFromId($user_id);
-        $sender = $result[0]['username'];
+        $result = $this->getPostInfo($post_id);
+        $receiver = $result[0]['user_id'];
+        $sender = $this->getUsernameFromId($user_id)[0]['username'];
+        $notification = $sender . " commented your post!";
+        $this->query("INSERT INTO notifications (user_id, notification_text, profile_image, sender) VALUES ('$receiver', '$notification', (SELECT profile_image FROM users WHERE user_id = '$user_id'), $user_id)");
 
-        $receiver = str_replace($sender,"",$chat_id);
-        $result = $this->getIdFromUsername($receiver);
-        $receiverID = $result[0]['user_id'];
-        $text = "New message from $sender";
-        $stmt = $this->db->prepare("INSERT INTO notifications (user_id, notification_text) VALUES (?,?)");
-        $stmt->bind_param("is",$receiverID,$text);
-        $stmt->execute();
-        $stmt->close();
+        
     }
 
     /**

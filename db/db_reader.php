@@ -11,7 +11,7 @@ class DataBaseReader extends SimpleDB {
     {
         $stmt = $this->db->prepare("SELECT notification_text, profile_image, sender
         FROM notifications
-        WHERE user_id = ?
+        WHERE user_id = ? AND is_read = 0
         ORDER BY created_at DESC;
         ");
         $stmt->bind_param("i", $user_id);
@@ -117,7 +117,7 @@ class DataBaseReader extends SimpleDB {
      */
     public function getCommentsFromPostId($post_id): array
     {
-        $stmt = $this->db->prepare("SELECT c.comment_text, u.username, u.profile_image
+        $stmt = $this->db->prepare("SELECT c.comment_text, u.username, u.profile_image, c.user_id
         FROM comments c
         JOIN users u ON c.user_id = u.user_id
         WHERE c.post_id = ?;");
