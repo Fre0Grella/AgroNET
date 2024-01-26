@@ -3,51 +3,6 @@
 require_once __DIR__ . "/simpleDB.php";
 class DataBaseReader extends SimpleDB {
 
-
-    /**
-     * @param $user_id, id of the current user
-     * @return array of associative arrays holding green random post
-     */
-    public function GreenRandomPost($user_id): array
-    {
-        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at
-        FROM posts p
-        WHERE category = 1 AND p.user_id NOT IN (
-            SELECT followed_id
-            FROM followers
-            WHERE follower_id = ?
-        )
-        ORDER BY RAND()
-        LIMIT 50;");
-        $stmt->bind_param("i", $user_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    /**
-     * @param $user_id, id of the current users
-     * @return array of associative arrays holding tractor random post
-     */
-    public function TractoRandomPost($user_id): array
-    {
-        $stmt = $this->db->prepare("SELECT p.post_id, p.description, p.category, p.image_data, p.created_at
-        FROM posts p
-        WHERE category = 0 AND p.user_id NOT IN (
-            SELECT followed_id
-            FROM followers
-            WHERE follower_id = ?
-        )
-        ORDER BY RAND()
-        LIMIT 50;");
-        $stmt->bind_param("i", $user_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
     /**
      * @param $user_id, id o current user
      * @return array of associative arrays with notification_text
