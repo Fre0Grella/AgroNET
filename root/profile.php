@@ -17,6 +17,8 @@ $templateParams["follower"] = $temp[0];
 $temp = $dbh->getFollowedNumber($user_id);
 $templateParams["followed"] = $temp[0];
 
+$templateParams["notifications"] = $dbh->getNotifications($user_id);
+
 
 require("template/profileTemplate.php");
 

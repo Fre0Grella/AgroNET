@@ -53,6 +53,9 @@
                                     <a id="notificationbtn" href="notifications.php" role="button" class="btn btn-block fs-3 fw-medium form-control">
                                         NOTIFICHE
                                     </a>
+                                    <?php if(sizeof($templateParams["notifications"]) > 0) : ?>
+                                        <span class="badge"><?php echo sizeof($templateParams["notifications"])?></span>
+                                    <?php endif; ?>
                                     <?php endif; ?>
                                 </div>
                             </div>
