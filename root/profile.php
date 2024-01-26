@@ -16,7 +16,6 @@ $temp = $dbh->getFollowersNumbers($user_id);
 $templateParams["follower"] = $temp[0];
 $temp = $dbh->getFollowedNumber($user_id);
 $templateParams["followed"] = $temp[0];
-print_r($templateParams["follower"]);
 
 
 require("template/profileTemplate.php");

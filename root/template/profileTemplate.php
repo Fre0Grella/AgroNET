@@ -37,22 +37,23 @@
                             </div>
                             <div class="row justify-content-around text-center">
                                 <div class="col-10">
-                                <?php if($_SESSION["user_id"] != $user_id) : ?>
-                                <form method="get" action="php/followManager.php">
-                                    <div class="form-group">
-                                        <button name="button" value="<?php echo $user_id;?>" class="btn btn-block fs-3 fw-medium form-control" >
-                                        <?php if($templateParams["isFollow"]): ?>
-                                            UNFOLLOW
-                                        <?php else : ?>
-                                            FOLLOW
-                                        <?php endif; ?>
-                                        </button>
-                                    </div>
-                                </form>
-                                <?php else : ?>
-                                <button name="button" class="btn btn-block fs-3 fw-medium form-control">
-                                    NOTIFICHE
-                                <?php endif; ?>
+                                    <?php if($_SESSION["user_id"] != $user_id) : ?>
+                                    <form method="get" action="php/followManager.php">
+                                        <div class="form-group">
+                                            <button name="button" value="<?php echo $user_id;?>" class="btn btn-block fs-3 fw-medium form-control" >
+                                            <?php if($templateParams["isFollow"]): ?>
+                                                UNFOLLOW
+                                            <?php else : ?>
+                                                FOLLOW
+                                            <?php endif; ?>
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <?php else : ?>
+                                    <a id="notificationbtn" href="notifications.php" role="button" class="btn btn-block fs-3 fw-medium form-control">
+                                        NOTIFICHE
+                                    </a>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>

@@ -2,14 +2,20 @@ main {
     margin: calc(40vh + 20px)  auto 0 auto;
 }
 
-button {
+button, #notificationbtn{
     background-color: #226037 !important;
     color: white !important;
     width: 70%;
 }
+
+#notificationbtn:hover {
+    width: 90%;
+}
+
 button:hover {
     width: 90%;
 }
+
 .searchBar {
     position: fixed;
     top: 0px;
