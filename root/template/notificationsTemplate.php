@@ -25,9 +25,6 @@
                             <p><?php echo $notification["notification_text"] ?></p>
                         </div>
                     </div>
-                    <div class="col-2 border-bottom">
-                        <button type="button" class="btn-close float-right"></button>
-                    </div>
                 </div>
             </article>
         <?php endforeach;?>
