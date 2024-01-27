@@ -11,6 +11,11 @@ main {
     float: right;
     width: 50% !important;
 }
+
+.commentTime {
+    float: right;
+}
+
 article {
     position: sticky;
     top: 0;

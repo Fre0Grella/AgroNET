@@ -117,7 +117,7 @@ class DataBaseReader extends SimpleDB {
      */
     public function getCommentsFromPostId($post_id): array
     {
-        $stmt = $this->db->prepare("SELECT c.comment_text, u.username, u.profile_image, c.user_id
+        $stmt = $this->db->prepare("SELECT c.comment_text, u.username, u.profile_image, c.user_id, c.created_at
         FROM comments c
         JOIN users u ON c.user_id = u.user_id
         WHERE c.post_id = ?;");

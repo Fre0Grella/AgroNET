@@ -78,6 +78,7 @@
                             </div>
                             <div class="col-10">
                                 <div class="col-12">
+                                    <time class="commentTime"><?php echo $comment["created_at"] ?></time>
                                     <h4><?php echo $comment["username"];?></h4>
                                 </div>
                                 <div class="col-12">
