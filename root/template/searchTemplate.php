@@ -16,16 +16,30 @@
         <?php require("sliderBar.php");?>
         <div class="main-spacer">
         <main>
-            <div class="searchBar">
+            <form method="get" class="searchBar">
                 <input type="search"
                 id="form1"
+                name="search"
                 class="form-control form-control-lg focus-ring focus-ring-dark"
                 placeholder="  What you're searching for. . ."/>
-            </div>
-            <?php 
-             include("postFeed.php");
-            showPost($templateParams["allPost"]); ?>
-
+            </form>
+            <?php if($_SESSION["searched"]) : ?>
+            <?php foreach($templateParams["usersSearched"] as $userinfo): ?>
+                <div class="row">
+                    <div class="col-5">
+                        <img src="<?php if (!isset($userinfo["profile_image"])) {
+                            echo 'img/defaultUserProfile.svg';
+                        } else {
+                            echo 'data:image/jpeg;base64,' . base64_encode( $userinfo["profile_image"] ) .'"';
+                        } ?>" class="img-fluid"/>
+                    </div>
+                    <div class="col-7">
+                        <p><?php echo $userinfo["username"] ?></p>
+                    </div>
+                </div>
+            <?php endforeach;?>
+            <?php else : include("postFeed.php"); showPost($templateParams["allPost"]); ?>
+            <?php endif; $_SESSION["searched"]= false ?>
         </main>
         <div class="spacer"></div>
     </div>
