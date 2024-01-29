@@ -1,5 +1,5 @@
 main {
-    margin: calc(40vh + 20px)  auto 0 auto;
+    margin: calc(40vh + 20px)  0 ;
 }
 
 button, #notificationbtn{
@@ -31,6 +31,7 @@ button:hover {
     display: flex;
     align-items: center;
     color: #226037;
+    overflow: hidden;
 }
 
 
@@ -50,7 +51,7 @@ button:hover {
         display: flex;
         align-items: center;
         border:none;
-        margin-top: 10vh
+        margin-top: 10vh;
     }
     #profilePic {
         max-height: none;

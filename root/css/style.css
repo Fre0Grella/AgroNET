@@ -121,8 +121,12 @@ nav img:hover {
 @media only screen and (orientation: portrait) {
 
 
-    header,h2, h5 {
+    h2, h5 {
         font-size: 50px !important;
+    }
+
+    header {
+        font-size: 220% !important;
     }
 
     p {
@@ -139,9 +143,13 @@ nav img:hover {
     }
     main {
         width: 100%;
-        margin: calc(10vh + 20px) auto;
+        margin: calc(10vh + 20px) 0;
         columns: 2;
         column-gap: 10px;
+    }
+
+    main article {
+        padding: 0 2vw;
     }
 
     nav {

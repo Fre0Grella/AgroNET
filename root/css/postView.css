@@ -1,6 +1,7 @@
 main {
     columns: 1 !important;
     display: flex !important;
+    padding: 0 2%;
 }
 .postCol {
     float: left;
@@ -16,6 +17,10 @@ main {
     float: right;
 }
 
+.profileInfo {
+    border-radius: 5px;
+}
+
 article {
     position: sticky;
     top: 0;
@@ -26,11 +31,12 @@ form button {
     background-color: white;
 }
 
+article img {
+    border-radius: 15px;
+}
+
 @media only screen and (orientation: portrait) {
 
-    main {
-        margin-left: 10px;
-    }
     h2 {
         font-size: 150% !important;
     }

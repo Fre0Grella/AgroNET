@@ -17,7 +17,7 @@
         <div class="main-spacer">
         <main>
             <div class="searchBar border-bottom">
-                <div class="container-fluid ">
+                <div class="container-fluid">
                     <div class="row text-center">
                         <div class="col-4">
                             <img src="<?php if (!($templateParams["info"]["profile_image"])) {
@@ -29,8 +29,10 @@
                         <div class="col-8">
                             <div class="row text-start justify-content-beetween">
                                 <div class="col-12"><h1 class="text-truncate"><?php echo $templateParams["info"]["username"];?></h1></div>
-                                <div class="col-6 "><h2 class="text-truncate">follower: <?php echo $templateParams["follower"]["nFollowers"]; ?></h2></div>
-                                <div class="col-6 "><h2 class="text-truncate">followed: <?php echo $templateParams["followed"]["nFollowed"]; ?></h2></div>
+                                <div class="col-4 "><p class="text-truncate">follower:</p> </div>
+                                <div class="col-2"><h1> <?php echo $templateParams["follower"]["nFollowers"]; ?></h1></div>
+                                <div class="col-4 "><p class="text-truncate">followed:</p> </div>
+                                <div class="col-2"><h1><?php echo $templateParams["followed"]["nFollowed"]; ?></h1></div>
                                 <div class="col-12">
                                     <p class="text-truncate text-wrap"><?php echo $templateParams["info"]["bio"]; ?> </p>
                                 </div>

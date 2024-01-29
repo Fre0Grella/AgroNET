@@ -17,7 +17,7 @@
   </nav>
   <div class="main-spacer">
     <main>
-        <div class="row">
+        <div class="row p-0 m-0">
             <div class="postCol border-bottom ">
                 <article>
                     <div class="row justify-content-center">
@@ -74,7 +74,7 @@
                             echo 'img/defaultUserProfile.svg';
                         } else {
                             echo 'data:image/jpeg;base64,' . base64_encode( $comment["profile_image"] ) .'"';
-                        } ?>" class="img-fluid profileImg">
+                        } ?>" class="img-fluid profileInfo">
                             </div>
                             <div class="col-10">
                                 <div class="col-12">
