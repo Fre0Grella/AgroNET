@@ -11,7 +11,7 @@ class DataBaseReader extends SimpleDB {
     {
         $stmt = $this->db->prepare("SELECT notification_text, profile_image, sender
         FROM notifications
-        WHERE user_id = ? AND is_read = 0
+        WHERE user_id = ?
         ORDER BY created_at DESC;
         ");
         $stmt->bind_param("i", $user_id);
