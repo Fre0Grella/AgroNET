@@ -7,6 +7,8 @@ $user_id = $_SESSION["user_id"];
 $templateParams["title"] = "AgroNET - Notifications page";
 $templateParams["notifications"] = $dbh->getNotifications($user_id);
 
+$dbh->readNotifications($user_id);
+
 
 require("template/notificationsTemplate.php");
 

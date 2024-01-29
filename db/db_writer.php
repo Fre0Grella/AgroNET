@@ -136,4 +136,16 @@ class DataBaseWriter extends DataBaseReader{
 
 
     }
+    
+    /**
+     * @param $user_id , id of the users who read notifications.
+     * @return void
+     */
+    public function readNotifications($user_id): void
+    {
+        $stmt = $this->db->prepare("UPDATE notifications SET is_read = 1 WHERE user_id = ? ");
+        $stmt->bind_Param("i", $user_id);
+        $stmt->execute();
+        $stmt->close();
+    }
 }
