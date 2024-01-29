@@ -24,10 +24,12 @@
                             echo 'data:image/jpeg;base64,' . base64_encode( $notification["profile_image"] ) .'"';
                         } ?>" class="img-fluid"/>
                     </div>
+                    
                     <div class="col-10 border-bottom">
                         <div class="col-12 ">
                             <p><?php echo $notification["notification_text"] ?></p>
                         </div>
+                        <time class="commentTime"><?php echo $notification["created_at"] ?></time>
                     </div>
                 </div>
             </article>

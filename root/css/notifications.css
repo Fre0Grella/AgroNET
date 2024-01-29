@@ -26,6 +26,10 @@ main article {
     background-image: linear-gradient(to top, #97503A, #FDE918, #226037);
 }
 
+.commentTime {
+    float: right;
+}
+
 .spacer {
     height: 15vh;
 }

@@ -9,9 +9,27 @@ class DataBaseReader extends SimpleDB {
      */
     public function getNotifications($user_id): array
     {
-        $stmt = $this->db->prepare("SELECT notification_text, profile_image, sender
+        $stmt = $this->db->prepare("SELECT notification_text, profile_image, sender, created_at
         FROM notifications
         WHERE user_id = ?
+        ORDER BY created_at DESC;
+        ");
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * @param $user_id, id o current user
+     * @return array of associative arrays with notification_text
+     */
+    public function getNotificationsNotRead($user_id): array
+    {
+        $stmt = $this->db->prepare("SELECT notification_text, profile_image, sender
+        FROM notifications
+        WHERE user_id = ? AND is_read = 0
         ORDER BY created_at DESC;
         ");
         $stmt->bind_param("i", $user_id);
