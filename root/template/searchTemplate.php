@@ -25,7 +25,7 @@
             </form>
             <?php if($_SESSION["searched"]) : ?>
             <?php foreach($templateParams["usersSearched"] as $userinfo): ?>
-                <div class="row">
+                <div class="row profileInfo">
                     <div class="col-5">
                         <img src="<?php if (!isset($userinfo["profile_image"])) {
                             echo 'img/defaultUserProfile.svg';
