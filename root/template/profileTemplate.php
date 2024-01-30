@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                             <div class="row justify-content-around text-center">
-                                <div class="col-10">
+                                <div class="col-12">
                                     <?php if($_SESSION["user_id"] != $user_id) : ?>
                                     <form method="get" action="php/followManager.php">
                                         <div class="form-group">
@@ -56,7 +56,7 @@
                                         <p>NOTIFICHE</p>
                                     </a>
                                     <?php if(sizeof($templateParams["notifications"]) > 0) : ?>
-                                        <span class="badge"><?php echo sizeof($templateParams["notifications"])?></span>
+                                        <span class="fw-medium"><?php echo sizeof($templateParams["notifications"])?></span>
                                     <?php endif; ?>
                                     <?php endif; ?>
                                 </div>

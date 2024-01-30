@@ -5,21 +5,25 @@ main {
 button, #notificationbtn{
     background-color: #226037 !important;
     color: white !important;
-    width: 70%;
+    width: 60%;
 }
 
 #notificationbtn:hover {
-    width: 90%;
+    width: 80%;
 }
 
 button:hover {
-    width: 90%;
+    width: 80%;
 }
 
-.badge {
-    border-radius: 50%;
+span {
+    padding: 0 15px;
+    border-radius: 15px;
     background: red;
     color: white;
+    font-size: calc(1.3rem + .6vw)
+    
+    /* font-size: 200%; */
 }
 
 .searchBar {
@@ -55,6 +59,10 @@ button:hover {
     }
     #profilePic {
         max-height: none;
+    }
+
+    span {
+        font-size: 330% !important;
     }
 
 }
