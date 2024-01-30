@@ -25,15 +25,15 @@
             </form>
             <?php if($_SESSION["searched"]) : ?>
             <?php foreach($templateParams["usersSearched"] as $userinfo): ?>
-                <div class="row profileInfo">
+                <div class="row">
                     <div class="col-5">
-                        <img src="<?php if (!isset($userinfo["profile_image"])) {
+                        <img  id="<?php echo $templateParams["userid_search"]?>" src="<?php if (!isset($userinfo["profile_image"])) {
                             echo 'img/defaultUserProfile.svg';
                         } else {
                             echo 'data:image/jpeg;base64,' . base64_encode( $userinfo["profile_image"] ) .'"';
-                        } ?>" class="img-fluid"/>
+                        } ?>" class="img-fluid profileInfo"/>
                     </div>
-                    <div class="col-7">
+                    <div id="<?php echo $templateParams["userid_search"]?>" class="col-7 profileInfo">
                         <p><?php echo $userinfo["username"] ?></p>
                     </div>
                 </div>
@@ -50,5 +50,6 @@
       </script>
       <script src="js/slider.js"></script>
       <script src="js/redirectPost.js"></script>
+      <script src="js/redirectProfile.js"></script>
     </body>
 </html>
