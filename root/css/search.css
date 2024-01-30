@@ -13,6 +13,10 @@ margin: 10vh auto 0 auto;
     border:none
 }
 
+.profileInfo {
+    border-radius: 10px;
+}
+
 .searchBar input {
     background-color: #efefef;
     color: #737373;

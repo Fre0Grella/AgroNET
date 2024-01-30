@@ -1,5 +1,5 @@
 main {
-    margin: calc(40vh + 20px)  0 ;
+    margin: calc(40vh + 20px)  auto 0 auto ;
 }
 
 button, #notificationbtn{

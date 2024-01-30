@@ -25,7 +25,7 @@
             </form>
             <?php if($_SESSION["searched"]) : ?>
             <?php foreach($templateParams["usersSearched"] as $userinfo): ?>
-                <div class="row">
+                <div class="row mt-5 p-2">
                     <div class="col-5">
                         <img  id="<?php echo $userinfo["user_id"]?>" src="<?php if (!isset($userinfo["profile_image"])) {
                             echo 'img/defaultUserProfile.svg';
@@ -34,7 +34,7 @@
                         } ?>" class="img-fluid profileInfo"/>
                     </div>
                     <div id="<?php echo $userinfo["user_id"]?>" class="col-7 profileInfo">
-                        <p><?php echo $userinfo["username"] ?></p>
+                        <p class="text-wrap text-truncate"><?php echo $userinfo["username"] ?></p>
                     </div>
                 </div>
             <?php endforeach;?>
