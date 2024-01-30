@@ -40,7 +40,7 @@ margin: 10vh auto 0 auto;
     }
 
     .searchBar input {
-        /* font-size: 4rem; */
+        font-size: 300%;
         border-radius: 50px;
     }
 
