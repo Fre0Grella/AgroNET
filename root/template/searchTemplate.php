@@ -27,13 +27,13 @@
             <?php foreach($templateParams["usersSearched"] as $userinfo): ?>
                 <div class="row">
                     <div class="col-5">
-                        <img  id="<?php echo $templateParams["userid_search"]?>" src="<?php if (!isset($userinfo["profile_image"])) {
+                        <img  id="<?php echo $userinfo["user_id"]?>" src="<?php if (!isset($userinfo["profile_image"])) {
                             echo 'img/defaultUserProfile.svg';
                         } else {
                             echo 'data:image/jpeg;base64,' . base64_encode( $userinfo["profile_image"] ) .'"';
                         } ?>" class="img-fluid profileInfo"/>
                     </div>
-                    <div id="<?php echo $templateParams["userid_search"]?>" class="col-7 profileInfo">
+                    <div id="<?php echo $userinfo["user_id"]?>" class="col-7 profileInfo">
                         <p><?php echo $userinfo["username"] ?></p>
                     </div>
                 </div>

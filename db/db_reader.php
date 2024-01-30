@@ -116,11 +116,15 @@ class DataBaseReader extends SimpleDB {
      */
     public function getSearchAdvice(string $search): array
     {
-        $stmt = $this->db->prepare("SELECT username, profile_image
-        FROM users
-        WHERE username LIKE ?;
+        $stmt = $this->db->prepare("SELECT u.username, u.profile_image, u.user_id,
+        COUNT(f.followed_id) as nFollower
+        FROM users u
+        LEFT JOIN followers f ON u.user_id = f.followed_id
+        WHERE username LIKE '%$search%'
+        GROUP BY u.user_id
+        ORDER BY nFollower DESC;
         ");
-        $stmt->bind_param("s", $search);
+        // $stmt->bind_param("s", $search);
         $stmt->execute();
         $result = $stmt->get_result();
 
