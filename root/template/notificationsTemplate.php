@@ -17,7 +17,7 @@
         <?php foreach($templateParams["notifications"] as $notification): ?>
             <article id="<?php echo $notification["sender"];?>" class="profileInfo">
                 <div class="row">
-                    <div class="col-1">
+                    <div class="col-3 col-md-1">
                         <img src="<?php if (!($notification["profile_image"])) {
                             echo 'img/defaultUserProfile.svg';
                         } else {
@@ -25,7 +25,7 @@
                         } ?>" class="img-fluid"/>
                     </div>
                     
-                    <div class="col-10 border-bottom">
+                    <div class="col-9 col-md-10 border-bottom">
                         <div class="col-12 ">
                             <p><?php echo $notification["notification_text"] ?></p>
                         </div>
