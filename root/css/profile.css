@@ -1,8 +1,9 @@
 main {
-    margin: calc(40vh + 20px)  auto 0 auto ;
+    margin: calc(40vh + 20px) auto 0 auto;
 }
 
-button, #notificationbtn{
+button,
+#notificationbtn {
     background-color: #226037 !important;
     color: white !important;
     width: 60%;
@@ -21,9 +22,7 @@ span {
     border-radius: 15px;
     background: red;
     color: white;
-    font-size: calc(1.3rem + .6vw)
-    
-    /* font-size: 200%; */
+    font-size: calc(1.3rem + .6vw);
 }
 
 .searchBar {
@@ -38,14 +37,12 @@ span {
     overflow: hidden;
 }
 
-
 #profilePic {
     max-height: 30vh;
     border-radius: 50px;
 }
 
 @media only screen and (orientation: portrait) {
-
     .searchBar {
         position: fixed;
         top: 0;
@@ -54,9 +51,10 @@ span {
         background: white;
         display: flex;
         align-items: center;
-        border:none;
+        border: none;
         margin-top: 10vh;
     }
+
     #profilePic {
         max-height: none;
     }
@@ -64,5 +62,4 @@ span {
     span {
         font-size: 330% !important;
     }
-
 }

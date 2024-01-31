@@ -3,11 +3,13 @@ main {
     display: flex !important;
     padding: 0 2%;
 }
+
 .postCol {
     float: left;
     width: 50% !important;
     margin-bottom: 20px;
 }
+
 .commentCol {
     float: right;
     width: 50% !important;
@@ -36,21 +38,23 @@ article img {
 }
 
 @media only screen and (orientation: portrait) {
-
     h2 {
         font-size: 150% !important;
     }
+
     p {
         font-size: 100% !important;
     }
+
     .postCol {
         width: 100% !important;
-        
     }
+
     .commentCol {
         width: 100% !important;
     }
+
     article {
-        position:relative;
+        position: relative;
     }
 }

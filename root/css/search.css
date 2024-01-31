@@ -1,5 +1,5 @@
 main {
-margin: 10vh auto 0 auto;
+    margin: 10vh auto 0 auto;
 }
 
 .searchBar {
@@ -10,7 +10,7 @@ margin: 10vh auto 0 auto;
     background: white;
     display: flex;
     align-items: center;
-    border:none
+    border: none;
 }
 
 .profileInfo {
@@ -29,7 +29,6 @@ margin: 10vh auto 0 auto;
 }
 
 @media only screen and (orientation: portrait) {
-
     .searchBar {
         position: fixed;
         top: 0;
@@ -38,7 +37,7 @@ margin: 10vh auto 0 auto;
         background: white;
         display: flex;
         align-items: center;
-        border:none;
+        border: none;
         margin-top: 10vh;
         z-index: 0;
     }
@@ -51,5 +50,4 @@ margin: 10vh auto 0 auto;
     main {
         margin-top: 20vh;
     }
-
 }
