@@ -23,7 +23,7 @@
                 class="form-control form-control-lg focus-ring focus-ring-dark"
                 placeholder="  What you're searching for. . ."/>
             </form>
-            <?php if($_SESSION["searched"]) : ?>
+            <?php if(isset($_SESSION["searched"])) : ?>
             <?php foreach($templateParams["usersSearched"] as $userinfo): ?>
                 <div class="row mt-5 p-2">
                     <div class="col-5">
@@ -39,7 +39,7 @@
                 </div>
             <?php endforeach;?>
             <?php else : include("postFeed.php"); showPost($templateParams["allPost"]); ?>
-            <?php endif; $_SESSION["searched"]= false ?>
+            <?php endif; unset($_SESSION["searched"])?>
         </main>
         <div class="spacer"></div>
     </div>
